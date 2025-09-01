@@ -1,0 +1,6 @@
+export const Menu = 'menu'
+export const MenuBar = 'menubar'
+export const MenuItem = 'menuitem'
+export const MenuItemCheckBox = 'menuitemcheckbox'
+export const None = 'none'
+export const Separator = 'separator'
