@@ -2,6 +2,7 @@ import * as ContextMenu from '../ContextMenu/ContextMenu.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
 import * as GetCommands from '../GetCommands/GetCommands.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
+import { getMenuHideCommands } from '../GetMenuHideCommands/GetMenuHideCommands.ts'
 import * as GetMenuIds from '../GetMenuIds/GetMenuIds.ts'
 import { getMenuShowCommands } from '../GetMenuShowCommands/GetMenuShowCommands.ts'
 import * as HandleContextMenu from '../HandleContextMenu/HandleContextMenu.ts'
@@ -27,4 +28,5 @@ export const commandMap = {
   'Menu.show': ContextMenu.show,
   'Menu.show2': ContextMenu.show2,
   'Menu.getShowCommands': getMenuShowCommands,
+  'Menu.getHideCommands': getMenuHideCommands,
 }
