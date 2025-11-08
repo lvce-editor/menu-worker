@@ -191,3 +191,11 @@ export const show2 = async (uid: number, menuId: any, x: number, y: number, mous
     /* mouseBlocking */ mouseBlocking,
   )
 }
+
+export const hide = async (restoreFocus = true): Promise<void> => {
+  if (state.menus.length === 0) {
+    return
+  }
+  state.menus = []
+  await RendererProcess.invoke(/* Menu.hide */ 'Menu.hide', /* restoreFocus */ restoreFocus)
+}
