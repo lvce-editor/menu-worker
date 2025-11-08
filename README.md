@@ -6,7 +6,7 @@ Webworker for the menu functionality in LVCE Editor.
 
 ```sh
 git clone git@github.com:lvce-editor/menu-worker.git &&
-cd text-search-worker &&
+cd menu-worker &&
 npm ci &&
 npm test
 ```
