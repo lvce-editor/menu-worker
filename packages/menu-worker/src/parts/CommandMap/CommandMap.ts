@@ -12,16 +12,16 @@ import * as SaveState from '../SaveState/SaveState.ts'
 import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
 
 export const commandMap = {
-  'TitleBar.getMenuEntries': GetMenuIds.getMenuEntries,
-  'TitleBar.getMenuIds': GetMenuIds.getMenuIds,
-  'TitleBar.handleButtonsClick': HandleButtonsClick.handleClick,
-  'TitleBar.handleContextMenu': HandleContextMenu.handleContextMenu,
-  'TitleBar.renderEventListeners': RenderEventListeners.renderEventListeners,
-  'TitleBarMenuBar.diff2': Diff2.diff2,
-  'TitleBarMenuBar.getCommands': GetCommands.getCommandIds,
-  'TitleBarMenuBar.getKeyBindings': GetKeyBindings.getKeyBindings,
-  'TitleBarMenuBar.getMenus': MenuEntries.getMenus,
-  'TitleBarMenuBar.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
-  'TitleBarMenuBar.render2': Render2.render2,
-  'TitleBarMenuBar.saveState': SaveState.saveState,
+  'Menu.getMenuEntries': GetMenuIds.getMenuEntries,
+  'Menu.getMenuIds': GetMenuIds.getMenuIds,
+  'Menu.handleButtonsClick': HandleButtonsClick.handleClick,
+  'Menu.handleContextMenu': HandleContextMenu.handleContextMenu,
+  'Menu.renderEventListeners': RenderEventListeners.renderEventListeners,
+  'Menu.diff2': Diff2.diff2,
+  'Menu.getCommands': GetCommands.getCommandIds,
+  'Menu.getKeyBindings': GetKeyBindings.getKeyBindings,
+  'Menu.getMenus': MenuEntries.getMenus,
+  'Menu.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
+  'Menu.render2': Render2.render2,
+  'Menu.saveState': SaveState.saveState,
 }
