@@ -13,8 +13,7 @@ export const getMenuItemDefaultDom = (menuItem: VisibleMenuItem): readonly Virtu
   if (isFocused) {
     className += ' ' + ClassNames.MenuItemFocused
   }
-  const dom: any[] = []
-  dom.push(
+  const dom: any[] = [
     {
       type: VirtualDomElements.Div,
       className,
@@ -23,7 +22,7 @@ export const getMenuItemDefaultDom = (menuItem: VisibleMenuItem): readonly Virtu
       childCount: 1,
     },
     text(label),
-  )
+  ]
   if (key) {
     dom[0].childCount++
     const parsedKey = ParseKey.parseKey(key)
