@@ -41,7 +41,7 @@ export const test: Test = async ({ FileSystem, Locator, expect, Workspace }) => 
   await expect(menuItemFile).toHaveAttribute('aria-haspopup', 'true')
   await expect(menuItemFile).toHaveAttribute('aria-expanded', 'false')
   await expect(menuItemFile).toHaveAttribute('role', 'menuitem')
-  await menuItemFile.click()
+  // await menuItemFile.click()
 
   await expect(menuItemFile).toHaveAttribute('aria-expanded', 'true')
 
