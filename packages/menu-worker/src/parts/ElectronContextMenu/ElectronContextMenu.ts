@@ -2,7 +2,6 @@ import * as ElectronMenuItemFlags from '../ElectronMenuItemFlags/ElectronMenuIte
 import * as MenuEntries from '../MenuEntries/MenuEntries.ts'
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
-import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 
 const convertMenuItem = (menuItem: any): any => {
   const { flags, label } = menuItem
@@ -34,7 +33,7 @@ const getItem = (items: any, label: any): any => {
 export const openContextMenu = async (x: any, y: any, id: any, ...args: readonly any[]): Promise<void> => {
   const entries = await MenuEntries.getMenuEntries(id, ...args)
   const electronMenuItems = convertMenuItems(entries)
-  const event = await SharedProcess.invoke('ElectronContextMenu.openContextMenu', electronMenuItems, x, y)
+  const event = await RendererWorker.invoke('ElectronContextMenu.openContextMenu', electronMenuItems, x, y)
   if (event.type === 'close') {
     return
   }
