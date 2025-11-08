@@ -4,18 +4,6 @@ import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEven
 export const renderEventListeners = (): readonly DomEventListener[] => {
   return [
     {
-      name: DomEventListenerFunctions.HandleClickMinimize,
-      params: ['handleClickMinimize'],
-    },
-    {
-      name: DomEventListenerFunctions.HandleClickToggleClose,
-      params: ['handleClickClose'],
-    },
-    {
-      name: DomEventListenerFunctions.HandleClickToggleMaximize,
-      params: ['handleClickToggleMaximize'],
-    },
-    {
       name: DomEventListenerFunctions.HandleFocusIn,
       params: ['handleFocus'],
     },
@@ -38,10 +26,6 @@ export const renderEventListeners = (): readonly DomEventListener[] => {
     {
       name: DomEventListenerFunctions.HandlePointerOver,
       params: ['handlePointerOver', 'event.clientX', 'event.clientY'],
-    },
-    {
-      name: DomEventListenerFunctions.HandleFocusOut,
-      params: ['handleFocusOut', 'event.clientX', 'event.clientY'], // TODO maybe check relatedTarget
     },
   ]
 }
