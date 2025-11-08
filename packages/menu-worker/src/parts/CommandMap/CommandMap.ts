@@ -1,3 +1,4 @@
+import * as ContextMenu from '../ContextMenu/ContextMenu.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
 import * as GetCommands from '../GetCommands/GetCommands.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
@@ -24,4 +25,6 @@ export const commandMap = {
   'Menu.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'Menu.render2': Render2.render2,
   'Menu.saveState': SaveState.saveState,
+  'Menu.show': ContextMenu.show,
+  'Menu.show2': ContextMenu.show2,
 }
