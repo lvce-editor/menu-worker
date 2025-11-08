@@ -1,5 +1,5 @@
-import * as ParentRpc from '../ParentRpc/ParentRpc.ts'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 
 export const getRecentlyOpened = (): Promise<any> => {
-  return ParentRpc.invoke(/* RecentlyOpened.getRecentlyOpened */ 'RecentlyOpened.getRecentlyOpened')
+  return RendererWorker.invoke(/* RecentlyOpened.getRecentlyOpened */ 'RecentlyOpened.getRecentlyOpened')
 }
