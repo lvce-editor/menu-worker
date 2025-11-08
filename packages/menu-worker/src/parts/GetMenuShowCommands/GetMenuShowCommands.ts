@@ -16,7 +16,7 @@ interface State {
   latestTimeStamp: number
   enterTimeout: number
 }
-const state: State = {
+export const state: State = {
   menus: [],
   latestTimeStamp: 0,
   enterTimeout: -1,
