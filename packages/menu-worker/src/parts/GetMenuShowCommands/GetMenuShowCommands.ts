@@ -91,16 +91,19 @@ export const getMenuShowCommands = async (items: any, menuId: any, x: number, y:
   })
   const visible = GetVisibleMenuItems.getVisible(menu.items, -1, false, menu.level)
   const dom = GetMenuVirtualDom.getMenuVirtualDom(visible).slice(1)
-  return [
-    /* Menu.show */ 'Menu.showMenu',
-    /* x */ bounds.x,
-    /* y */ bounds.y,
-    /* width */ bounds.width,
-    /* height */ bounds.height,
-    /* items */ menu.items,
-    /* level */ menu.level,
-    /* parentIndex */ -1,
-    /* dom */ dom,
-    /* mouseBlocking */ mouseBlocking,
-  ]
+  return {
+    menu,
+    commands: [
+      /* Menu.show */ 'Menu.showMenu',
+      /* x */ bounds.x,
+      /* y */ bounds.y,
+      /* width */ bounds.width,
+      /* height */ bounds.height,
+      /* items */ menu.items,
+      /* level */ menu.level,
+      /* parentIndex */ -1,
+      /* dom */ dom,
+      /* mouseBlocking */ mouseBlocking,
+    ],
+  }
 }
