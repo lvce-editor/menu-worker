@@ -47,3 +47,13 @@ export const getMenuEntries = async (id: any, ...args: any): Promise<any> => {
     throw new VError(error, `Failed to load menu entries for id ${id}`)
   }
 }
+
+export const getMenuEntries2 = async (uid: any, menuId: number, ...args: readonly any[]): Promise<any> => {
+  try {
+    const module = await getModule(menuId)
+    // @ts-ignore
+    return module.getMenuEntries(uid, ...args)
+  } catch (error) {
+    throw new VError(error, `Failed to load menu entries for id ${menuId}`)
+  }
+}
