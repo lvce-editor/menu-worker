@@ -1,6 +1,6 @@
 import * as Assert from '../Assert/Assert.ts'
-import * as ContextMenuBrowser from '../ContextMenuBrowser/ContextMenuBrowser.js'
-import * as ContextMenuElectron from '../ContextMenuElectron/ContextMenuElectron.js'
+import * as ContextMenuBrowser from '../ContextMenuBrowser/ContextMenuBrowser.ts'
+import * as ContextMenuElectron from '../ContextMenuElectron/ContextMenuElectron.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as Preferences from '../Preferences/Preferences.ts'
 
