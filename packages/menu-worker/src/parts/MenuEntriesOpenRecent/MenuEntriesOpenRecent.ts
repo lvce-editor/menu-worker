@@ -4,7 +4,6 @@ import * as MenuEntryId from '../MenuEntryId/MenuEntryId.ts'
 import * as MenuEntrySeparator from '../MenuEntrySeparator/MenuEntrySeparator.ts'
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 import * as PathDisplay from '../PathDisplay/PathDisplay.ts'
-import * as TitleBarMenuBarStrings from '../TitleBarMenuBarStrings/TitleBarMenuBarStrings.ts'
 import * as Workspace from '../Workspace/Workspace.ts'
 
 const MAX_MENU_RECENT_ENTRIES = 10
@@ -32,14 +31,14 @@ export const getMenuEntries = async (): Promise<readonly MenuEntry[]> => {
   items.push(
     {
       id: 'more',
-      label: TitleBarMenuBarStrings.moreDot(),
+      label: '...',
       flags: MenuItemFlags.None,
       command: 'QuickPick.showRecent',
     },
     MenuEntrySeparator.menuEntrySeparator,
     {
       id: 'clearRecentlyOpened',
-      label: TitleBarMenuBarStrings.clearRecentlyOpened(),
+      label: 'clear',
       flags: MenuItemFlags.None,
       command: 'RecentlyOpened.clearRecentlyOpened',
     },
