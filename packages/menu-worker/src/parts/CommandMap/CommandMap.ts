@@ -12,11 +12,8 @@ import * as SaveState from '../SaveState/SaveState.ts'
 import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
 
 export const commandMap = {
-  'TitleBar.getButtonsVirtualDom': GetTitleBarButtonsVirtualDom.getTitleBarButtonsVirtualDom,
-  'TitleBar.getIconVirtualDom': GetTitleBarIconVirtualDom.getTitleBarIconVirtualDom,
   'TitleBar.getMenuEntries': GetMenuIds.getMenuEntries,
   'TitleBar.getMenuIds': GetMenuIds.getMenuIds,
-  'TitleBar.getTitleVirtualDom': GetTitleVirtualDom.getTitleVirtualDom,
   'TitleBar.handleButtonsClick': HandleButtonsClick.handleClick,
   'TitleBar.handleContextMenu': HandleContextMenu.handleContextMenu,
   'TitleBar.renderEventListeners': RenderEventListeners.renderEventListeners,
@@ -24,10 +21,6 @@ export const commandMap = {
   'TitleBarMenuBar.getCommands': GetCommands.getCommandIds,
   'TitleBarMenuBar.getKeyBindings': GetKeyBindings.getKeyBindings,
   'TitleBarMenuBar.getMenus': MenuEntries.getMenus,
-  'TitleBarMenuBar.getTitleBarButtons': GetTitleBarButtons.getTitleBarButtons,
-  'TitleBarMenuBar.getVirtualDom': GetTitleBarMenuBarVirtualDom.getTitleBarMenuBarVirtualDom,
-  'TitleBarMenuBar.handlePointerOut': WrapCommand.wrapCommand(HandlePointerOut.handlePointerOut),
-  'TitleBarMenuBar.handlePointerOver': WrapCommand.wrapCommand(HandlePointerOver.handlePointerOver),
   'TitleBarMenuBar.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'TitleBarMenuBar.render2': Render2.render2,
   'TitleBarMenuBar.saveState': SaveState.saveState,
