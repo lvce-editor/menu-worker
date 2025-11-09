@@ -18,6 +18,7 @@ import * as MenuEntries from '../MenuEntries/MenuEntries.ts'
 import * as Render2 from '../Render2/Render2.ts'
 import * as RenderEventListeners from '../RenderEventListeners/RenderEventListeners.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
+import { selectItem } from '../SelectItem/SelectItem.ts'
 import { showSubMenu } from '../ShowSubMenu/ShowSubMenu.ts'
 import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
 
@@ -25,6 +26,7 @@ export const commandMap = {
   'Menu.diff2': Diff2.diff2,
   'Menu.focusFirst': focusFirst,
   'Menu.focusIndex': focusIndex,
+  'Menu.selectItem': selectItem,
   'Menu.focusLast': focusLast,
   'Menu.focusNext': focusNext,
   'Menu.getCommands': GetCommands.getCommandIds,
