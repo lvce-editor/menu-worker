@@ -1,7 +1,7 @@
 // TODO lazyload menuEntries and use Command.execute (maybe)
 import * as GetMenuVirtualDom from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
 import * as GetVisibleMenuItems from '../GetVisibleMenuItems/GetVisibleMenuItems.ts'
-import { addMenuInternal, getCount } from '../InternalMenuState/InternalMenuState.ts'
+import { addMenuInternal, getAll, getCount } from '../InternalMenuState/InternalMenuState.ts'
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 
 const CONTEXT_MENU_WIDTH = 250
@@ -74,7 +74,7 @@ export const getMenuShowCommands = async (items: any, menuId: any, x: number, y:
   const visible = GetVisibleMenuItems.getVisible(menu.items, -1, false, menu.level)
   const dom = GetMenuVirtualDom.getMenuVirtualDom(visible).slice(1)
   return {
-    menus: state.menus,
+    menus: getAll(),
     menu,
     commands: [
       /* Menu.show */ 'Menu.showMenu',
