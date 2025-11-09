@@ -1,6 +1,8 @@
 import * as ContextMenu from '../ContextMenu/ContextMenu.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
 import { focusFirst } from '../FocusFirst/FocusFirst.ts'
+import { focusIndex } from '../FocusIndex/FocusIndex.ts'
+import { focusLast } from '../FocusLast/FocusLast.ts'
 import { focusNext } from '../FocusNext/FocusNext.ts'
 import * as GetCommands from '../GetCommands/GetCommands.ts'
 import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
@@ -22,6 +24,8 @@ import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
 export const commandMap = {
   'Menu.diff2': Diff2.diff2,
   'Menu.focusFirst': focusFirst,
+  'Menu.focusIndex': focusIndex,
+  'Menu.focusLast': focusLast,
   'Menu.focusNext': focusNext,
   'Menu.getCommands': GetCommands.getCommandIds,
   'Menu.getHideCommands': getMenuHideCommands,
