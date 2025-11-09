@@ -1,7 +1,7 @@
 import { canBeFocused } from '../CanBeFocused/CanBeFocused.ts'
 import { focusIndex } from '../FocusIndex/FocusIndex.ts'
 import { getAll, getCount } from '../InternalMenuState/InternalMenuState.ts'
-import * as Logger from '../Logger/Logger.js'
+import * as Logger from '../Logger/Logger.ts'
 
 export const getCurrentMenu = (): any => {
   if (getCount() === 0) {
