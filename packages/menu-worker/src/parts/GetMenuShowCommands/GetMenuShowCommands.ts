@@ -74,6 +74,7 @@ export const getMenuShowCommands = async (items: any, menuId: any, x: number, y:
   const visible = GetVisibleMenuItems.getVisible(menu.items, -1, false, menu.level)
   const dom = GetMenuVirtualDom.getMenuVirtualDom(visible).slice(1)
   return {
+    menus: state.menus,
     menu,
     commands: [
       /* Menu.show */ 'Menu.showMenu',
