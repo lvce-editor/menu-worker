@@ -1,3 +1,4 @@
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as MenuEntriesEdit from '../MenuEntriesEdit/MenuEntriesEdit.ts'
 import * as MenuEntriesFile from '../MenuEntriesFile/MenuEntriesFile.ts'
 import * as MenuEntriesGo from '../MenuEntriesGo/MenuEntriesGo.ts'
@@ -8,7 +9,6 @@ import * as MenuEntriesSelection from '../MenuEntriesSelection/MenuEntriesSelect
 import * as MenuEntriesTerminal from '../MenuEntriesTerminal/MenuEntriesTerminal.ts'
 import * as MenuEntriesTitleBar from '../MenuEntriesTitleBar/MenuEntriesTitleBar.ts'
 import * as MenuEntriesView from '../MenuEntriesView/MenuEntriesView.ts'
-import { VError } from '../VError/VError.ts'
 
 const menus = [
   MenuEntriesEdit,
@@ -27,33 +27,12 @@ export const getMenus = (): any => {
   return menus
 }
 
-const getModule = (id: number): any => {
-  for (const module of menus) {
-    if (module.id === id) {
-      return module
-    }
-  }
-  return undefined
-}
-
 export const getMenuEntries = async (id: any, ...args: any): Promise<any> => {
-  try {
-    const module = getModule(id)
-    // @ts-ignore
-    const inject = module.inject || []
-    // @ts-ignore
-    return module.getMenuEntries(...args)
-  } catch (error) {
-    throw new VError(error, `Failed to load menu entries for id ${id}`)
-  }
+  // @ts-ignore
+  return RendererWorker.invoke('Menu.getMenuEntries', id, ...args)
 }
 
 export const getMenuEntries2 = async (uid: any, menuId: number, ...args: readonly any[]): Promise<any> => {
-  try {
-    const module = await getModule(menuId)
-    // @ts-ignore
-    return module.getMenuEntries(uid, ...args)
-  } catch (error) {
-    throw new VError(error, `Failed to load menu entries for id ${menuId}`)
-  }
+  // @ts-ignore
+  return RendererWorker.invoke('Menu.getMenuEntries2', uid, menuId, ...args)
 }
