@@ -1,7 +1,7 @@
 import { get, getCount } from '../InternalMenuState/InternalMenuState.ts'
 import { selectIndex } from '../SelectIndex/SelectIndex.ts'
 
-export const selectItem = (text: string) => {
+export const selectItem = async (text: string): Promise<void> => {
   for (let level = 0; level < getCount(); level++) {
     const menu = get(level)
     for (let i = 0; i < menu.items.length; i++) {
