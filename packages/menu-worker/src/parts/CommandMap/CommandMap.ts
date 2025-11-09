@@ -6,6 +6,8 @@ import { getMenuHideCommands } from '../GetMenuHideCommands/GetMenuHideCommands.
 import * as GetMenuIds from '../GetMenuIds/GetMenuIds.ts'
 import { getMenuShowCommands } from '../GetMenuShowCommands/GetMenuShowCommands.ts'
 import * as HandleContextMenu from '../HandleContextMenu/HandleContextMenu.ts'
+import { handleMouseEnter } from '../HandleMouseEnter/HandleMouseEnter.ts'
+import { handleMouseLeave } from '../HandleMouseLeave/HandleMouseLeave.ts'
 import { hideSubMenus } from '../HideSubMenus/HideSubMenus.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as MenuEntries from '../MenuEntries/MenuEntries.ts'
@@ -33,4 +35,6 @@ export const commandMap = {
   'Menu.getHideCommands': getMenuHideCommands,
   'Menu.showSubMenu': showSubMenu,
   'Menu.hideSubMenus': hideSubMenus,
+  'Menu.handleMouseEnter': handleMouseEnter,
+  'Menu.handleMouseLeave': handleMouseLeave,
 }
