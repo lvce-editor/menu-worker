@@ -45,3 +45,11 @@ export const set = (menus: any[]): void => {
 export const getAll = (): any[] => {
   return state.menus
 }
+
+export const setTimestamp = (timestamp: number): void => {
+  state.latestTimeStamp = timestamp
+}
+
+export const getLatestTimestamp = (): number => {
+  return state.latestTimeStamp
+}
