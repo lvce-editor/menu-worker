@@ -1,13 +1,13 @@
-import { state } from '../GetMenuShowCommands/GetMenuShowCommands.ts'
+import { getCount, reset } from '../InternalMenuState/InternalMenuState.ts'
 
 export const getMenuHideCommands = async (restoreFocus = true): Promise<any> => {
-  if (state.menus.length === 0) {
+  if (getCount() === 0) {
     return {
       newMenus: [],
       commands: [],
     }
   }
-  state.menus = []
+  reset()
   return {
     commands: [/* Menu.hide */ 'Menu.hide', /* restoreFocus */ restoreFocus],
     newMenus: [],
