@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
 // TODO lazyload menuEntries and use Command.execute (maybe)
 
 // TODO difference between focusing with mouse or keyboard
@@ -31,4 +32,16 @@ export const getCount = (): number => {
 
 export const reset = (): void => {
   state.menus = []
+}
+
+export const get = (index: number): any => {
+  return state.menus[index]
+}
+
+export const set = (menus: any[]): void => {
+  state.menus = menus
+}
+
+export const getAll = (): any[] => {
+  return state.menus
 }
