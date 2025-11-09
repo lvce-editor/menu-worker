@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-implied-eval */
+import { focusIndex } from '../FocusIndex/FocusIndex.ts'
+import { hideSubMenus } from '../HideSubMenus/HideSubMenus.ts'
 import { get, getCount, getLatestTimestamp, setTimestamp } from '../InternalMenuState/InternalMenuState.ts'
 import { showSubMenuAtEnter } from '../ShowSubMenu/ShowSubMenu.ts'
 
