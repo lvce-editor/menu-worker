@@ -1,5 +1,5 @@
 import { MenuItemFlags } from '@lvce-editor/constants'
-import * as ExecuteMenuItemCommand from '../ExecuteMenuItemCommand/ExecuteMenuItemCommand.js'
+import * as ExecuteMenuItemCommand from '../ExecuteMenuItemCommand/ExecuteMenuItemCommand.ts'
 import { hide } from '../Hide/Hide.ts'
 import { get } from '../InternalMenuState/InternalMenuState.ts'
 import { showSubMenu } from '../ShowSubMenu/ShowSubMenu.ts'

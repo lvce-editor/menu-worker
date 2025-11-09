@@ -19,6 +19,7 @@ import * as MenuEntries from '../MenuEntries/MenuEntries.ts'
 import * as Render2 from '../Render2/Render2.ts'
 import * as RenderEventListeners from '../RenderEventListeners/RenderEventListeners.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
+import { selectItem } from '../SelectItem/SelectItem.ts'
 import { showSubMenu } from '../ShowSubMenu/ShowSubMenu.ts'
 import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
 
@@ -44,6 +45,7 @@ export const commandMap = {
   'Menu.render2': Render2.render2,
   'Menu.renderEventListeners': RenderEventListeners.renderEventListeners,
   'Menu.saveState': SaveState.saveState,
+  'Menu.selectItem': selectItem,
   'Menu.show': ContextMenu.show,
   'Menu.show2': ContextMenu.show2,
   'Menu.showSubMenu': showSubMenu,
