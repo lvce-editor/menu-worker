@@ -1,6 +1,7 @@
 // TODO lazyload menuEntries and use Command.execute (maybe)
 import * as GetMenuVirtualDom from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
 import * as GetVisibleMenuItems from '../GetVisibleMenuItems/GetVisibleMenuItems.ts'
+import { addMenuInternal, getAll, getCount } from '../InternalMenuState/InternalMenuState.ts'
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 
 const CONTEXT_MENU_WIDTH = 250
@@ -10,25 +11,6 @@ const CONTEXT_MENU_WIDTH = 250
 // with keyboard -> don't open submenu, only focus
 
 // TODO this code seems a bit too complicated, maybe it can be simplified
-
-interface State {
-  menus: any[]
-  latestTimeStamp: number
-  enterTimeout: number
-}
-export const state: State = {
-  menus: [],
-  latestTimeStamp: 0,
-  enterTimeout: -1,
-}
-
-const addMenuInternal = (menu: any): any => {
-  if (state.menus.length > 5) {
-    throw new Error('too many menus')
-  }
-  state.menus.push(menu)
-  return menu
-}
 
 // TODO handle printable letter and focus item that starts with that letter
 
@@ -85,14 +67,14 @@ export const getMenuShowCommands = async (items: any, menuId: any, x: number, y:
     id: menuId,
     items,
     focusedIndex: -1,
-    level: state.menus.length,
+    level: getCount(),
     x: bounds.x,
     y: bounds.y,
   })
   const visible = GetVisibleMenuItems.getVisible(menu.items, -1, false, menu.level)
   const dom = GetMenuVirtualDom.getMenuVirtualDom(visible).slice(1)
   return {
-    menus: state.menus,
+    menus: getAll(),
     menu,
     commands: [
       /* Menu.show */ 'Menu.showMenu',

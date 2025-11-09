@@ -2,6 +2,7 @@
 import * as GetMenuEntriesWithKeyBindings from '../GetMenuEntriesWithKeyBindings/GetMenuEntriesWithKeyBindings.ts'
 import * as GetMenuVirtualDom from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
 import * as GetVisibleMenuItems from '../GetVisibleMenuItems/GetVisibleMenuItems.ts'
+import { addMenuInternal, getCount, reset } from '../InternalMenuState/InternalMenuState.ts'
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
@@ -70,25 +71,6 @@ export const getIndexToFocusNext = (menu: any): any => {
   return getIndexToFocusNextStartingAt(menu.items, startIndex)
 }
 
-interface State {
-  menus: any[]
-  latestTimeStamp: number
-  enterTimeout: number
-}
-export const state: State = {
-  menus: [],
-  latestTimeStamp: 0,
-  enterTimeout: -1,
-}
-
-export const addMenuInternal = (menu: any): any => {
-  if (state.menus.length > 5) {
-    throw new Error('too many menus')
-  }
-  state.menus.push(menu)
-  return menu
-}
-
 // TODO handle printable letter and focus item that starts with that letter
 
 // TODO pageup / pagedown keys
@@ -145,7 +127,7 @@ export const show = async (x: number, y: number, id: any, mouseBlocking = false,
     id,
     items,
     focusedIndex: -1,
-    level: state.menus.length,
+    level: getCount(),
     x: bounds.x,
     y: bounds.y,
   })
@@ -172,7 +154,7 @@ export const show2 = async (uid: number, menuId: any, x: number, y: number, mous
     id: menuId,
     items,
     focusedIndex: -1,
-    level: state.menus.length,
+    level: getCount(),
     x: bounds.x,
     y: bounds.y,
   })
@@ -193,9 +175,9 @@ export const show2 = async (uid: number, menuId: any, x: number, y: number, mous
 }
 
 export const hide = async (restoreFocus = true): Promise<void> => {
-  if (state.menus.length === 0) {
+  if (getCount() === 0) {
     return
   }
-  state.menus = []
+  reset()
   await RendererProcess.invoke(/* Menu.hide */ 'Menu.hide', /* restoreFocus */ restoreFocus)
 }
