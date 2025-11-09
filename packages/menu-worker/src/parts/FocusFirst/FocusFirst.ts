@@ -3,7 +3,7 @@ import { focusIndex } from '../FocusIndex/FocusIndex.ts'
 import { getAll, getCount } from '../InternalMenuState/InternalMenuState.ts'
 import * as Logger from '../Logger/Logger.js'
 
-const getCurrentMenu = (): any => {
+export const getCurrentMenu = (): any => {
   if (getCount() === 0) {
     Logger.warn('menu not available')
   }
