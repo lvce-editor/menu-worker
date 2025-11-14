@@ -48,9 +48,11 @@ const getMenuBounds = (x: number, y: number, items: readonly any[]): any => {
 
   if (x + menuWidth > windowWidth) {
     x -= menuWidth
+    x = Math.max(x, 0)
   }
   if (y + menuHeight > windowHeight) {
     y -= menuHeight
+    y = Math.max(y, 0)
   }
 
   return {
