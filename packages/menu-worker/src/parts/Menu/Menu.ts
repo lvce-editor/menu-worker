@@ -123,10 +123,4 @@ export const show2 = async (uid: number, menuId: any, x: number, y: number, mous
   )
 }
 
-export const hide = async (restoreFocus = true): Promise<void> => {
-  if (getCount() === 0) {
-    return
-  }
-  reset()
-  await RendererProcess.invoke(/* Menu.hide */ 'Menu.hide', /* restoreFocus */ restoreFocus)
-}
+export { hide } from '../Hide/Hide.ts'
