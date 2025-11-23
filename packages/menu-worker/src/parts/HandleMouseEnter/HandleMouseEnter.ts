@@ -1,14 +1,8 @@
-/* eslint-disable @typescript-eslint/no-implied-eval */
 import { focusIndex } from '../FocusIndex/FocusIndex.ts'
 import { hideSubMenus } from '../HideSubMenus/HideSubMenus.ts'
 import { get, getCount, getLatestTimestamp, setTimestamp } from '../InternalMenuState/InternalMenuState.ts'
+import { resolveAfterTimeout } from '../ResolveAfterTimeout/ResolveAfterTimeout.ts'
 import { showSubMenuAtEnter } from '../ShowSubMenu/ShowSubMenu.ts'
-
-const MENU_DELAY_TRIANGLE = 300
-
-const resolveAfterTimeout = (fn: any): void => {
-  setTimeout(fn, MENU_DELAY_TRIANGLE)
-}
 
 export const handleMouseEnter = async (level: number, index: number, enterX: number, enterY: number, enterTimeStamp: number): Promise<any> => {
   setTimestamp(enterTimeStamp)
