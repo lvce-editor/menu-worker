@@ -14,6 +14,7 @@ import { getMenuShowCommands } from '../GetMenuShowCommands/GetMenuShowCommands.
 import * as HandleContextMenu from '../HandleContextMenu/HandleContextMenu.ts'
 import { handleMouseEnter } from '../HandleMouseEnter/HandleMouseEnter.ts'
 import { handleMouseLeave } from '../HandleMouseLeave/HandleMouseLeave.ts'
+import { hide } from '../Hide/Hide.ts'
 import { hideSubMenus } from '../HideSubMenus/HideSubMenus.ts'
 import * as LoadContent from '../LoadContent/LoadContent.ts'
 import * as MenuEntries from '../MenuEntries/MenuEntries.ts'
@@ -34,6 +35,7 @@ export const commandMap = {
   'Menu.focusNext': focusNext,
   'Menu.getCommands': GetCommands.getCommandIds,
   'Menu.getHideCommands': getMenuHideCommands,
+  'Menu.hide': hide,
   'Menu.getKeyBindings': GetKeyBindings.getKeyBindings,
   'Menu.getMenuEntries': GetMenuIds.getMenuEntries,
   'Menu.getMenuIds': GetMenuIds.getMenuIds,
