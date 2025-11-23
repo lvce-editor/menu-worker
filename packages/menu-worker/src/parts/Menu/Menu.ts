@@ -1,9 +1,9 @@
 // TODO lazyload menuEntries and use Command.execute (maybe)
+import { getMenuBounds } from '../GetMenuBounds/GetMenuBounds.ts'
 import * as GetMenuEntriesWithKeyBindings from '../GetMenuEntriesWithKeyBindings/GetMenuEntriesWithKeyBindings.ts'
 import * as GetMenuVirtualDom from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
 import * as GetVisibleMenuItems from '../GetVisibleMenuItems/GetVisibleMenuItems.ts'
 import { addMenuInternal, getCount, reset } from '../InternalMenuState/InternalMenuState.ts'
-import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
 export const MENU_WIDTH = 150
@@ -25,49 +25,6 @@ export * from '../GetMenuHeight/GetMenuHeight.ts'
 // TODO pageup / pagedown keys
 
 // TODO more tests
-
-const CONTEXT_MENU_ITEM_HEIGHT = 26
-const CONTEXT_MENU_SEPARATOR_HEIGHT = 11
-const CONTEXT_MENU_PADDING = 8
-
-export const getMenuHeight = (items: readonly any[]): number => {
-  let height = CONTEXT_MENU_PADDING
-  for (const item of items) {
-    switch (item.flags) {
-      case MenuItemFlags.Separator:
-        height += CONTEXT_MENU_SEPARATOR_HEIGHT
-        break
-      default:
-        height += CONTEXT_MENU_ITEM_HEIGHT
-        break
-    }
-  }
-  return height
-}
-
-const getMenuBounds = (x: number, y: number, items: readonly any[]): any => {
-  const menuWidth = CONTEXT_MENU_WIDTH
-  const menuHeight = getMenuHeight(items)
-  const layoutState = { points: [0, 0] }
-  const windowWidth = layoutState.points[0]
-  const windowHeight = layoutState.points[1]
-  // TODO maybe only send labels and keybindings to ui (id not needed on ui)
-  // TODO what about separators?
-
-  if (x + menuWidth > windowWidth) {
-    x -= menuWidth
-  }
-  if (y + menuHeight > windowHeight) {
-    y -= menuHeight
-  }
-
-  return {
-    x,
-    y,
-    width: menuWidth,
-    height: menuHeight,
-  }
-}
 
 export const show = async (x: number, y: number, id: any, mouseBlocking = false, ...args: readonly any[]): Promise<void> => {
   const items = await GetMenuEntriesWithKeyBindings.getMenuEntriesWithKeyBindings(id, ...args)
