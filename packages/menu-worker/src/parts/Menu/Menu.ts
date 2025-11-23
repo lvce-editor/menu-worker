@@ -8,11 +8,7 @@ import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
 export const MENU_WIDTH = 150
 
-const CONTEXT_MENU_WIDTH = 250
-
-export const getMenuWidth = (): number => {
-  return CONTEXT_MENU_WIDTH
-}
+export { getMenuWidth } from '../GetMenuWidth/GetMenuWidth.ts'
 
 export * from '../GetMenuHeight/GetMenuHeight.ts'
 
