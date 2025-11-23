@@ -2,7 +2,7 @@
 import * as GetMenuEntriesWithKeyBindings from '../GetMenuEntriesWithKeyBindings/GetMenuEntriesWithKeyBindings.ts'
 import * as GetMenuVirtualDom from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
 import * as GetVisibleMenuItems from '../GetVisibleMenuItems/GetVisibleMenuItems.ts'
-import { addMenuInternal, getCount, reset } from '../InternalMenuState/InternalMenuState.ts'
+import { addMenuInternal, getCount } from '../InternalMenuState/InternalMenuState.ts'
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
