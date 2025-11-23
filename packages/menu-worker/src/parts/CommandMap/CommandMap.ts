@@ -1,3 +1,4 @@
+import { closeSubMenu } from '../CloseSubMenu/CloseSubMenu.ts'
 import * as ContextMenu from '../ContextMenu/ContextMenu.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
 import { focusFirst } from '../FocusFirst/FocusFirst.ts'
@@ -29,6 +30,7 @@ export const commandMap = {
   'Menu.focusFirst': focusFirst,
   'Menu.focusIndex': focusIndex,
   'Menu.focusLast': focusLast,
+  'Menu.closeSubMenu': closeSubMenu,
   'Menu.focusNext': focusNext,
   'Menu.getCommands': GetCommands.getCommandIds,
   'Menu.getHideCommands': getMenuHideCommands,
