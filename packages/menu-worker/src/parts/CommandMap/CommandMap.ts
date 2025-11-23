@@ -21,21 +21,21 @@ import * as MenuEntries from '../MenuEntries/MenuEntries.ts'
 import * as Render2 from '../Render2/Render2.ts'
 import * as RenderEventListeners from '../RenderEventListeners/RenderEventListeners.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
+import { selectIndex } from '../SelectIndex/SelectIndex.ts'
 import { selectItem } from '../SelectItem/SelectItem.ts'
 import { showSubMenu } from '../ShowSubMenu/ShowSubMenu.ts'
 import * as WrapCommand from '../WrapCommand/WrapCommand.ts'
 
 export const commandMap = {
+  'Menu.closeSubMenu': closeSubMenu,
   'Menu.diff2': Diff2.diff2,
-  'Menu.focusPrevious': focusPrevious,
   'Menu.focusFirst': focusFirst,
   'Menu.focusIndex': focusIndex,
   'Menu.focusLast': focusLast,
-  'Menu.closeSubMenu': closeSubMenu,
   'Menu.focusNext': focusNext,
+  'Menu.focusPrevious': focusPrevious,
   'Menu.getCommands': GetCommands.getCommandIds,
   'Menu.getHideCommands': getMenuHideCommands,
-  'Menu.hide': hide,
   'Menu.getKeyBindings': GetKeyBindings.getKeyBindings,
   'Menu.getMenuEntries': GetMenuIds.getMenuEntries,
   'Menu.getMenuIds': GetMenuIds.getMenuIds,
@@ -44,11 +44,13 @@ export const commandMap = {
   'Menu.handleContextMenu': HandleContextMenu.handleContextMenu,
   'Menu.handleMouseEnter': handleMouseEnter,
   'Menu.handleMouseLeave': handleMouseLeave,
+  'Menu.hide': hide,
   'Menu.hideSubMenus': hideSubMenus,
   'Menu.loadContent': WrapCommand.wrapCommand(LoadContent.loadContent),
   'Menu.render2': Render2.render2,
   'Menu.renderEventListeners': RenderEventListeners.renderEventListeners,
   'Menu.saveState': SaveState.saveState,
+  'Menu.selectIndex': selectIndex,
   'Menu.selectItem': selectItem,
   'Menu.show': ContextMenu.show,
   'Menu.show2': ContextMenu.show2,
