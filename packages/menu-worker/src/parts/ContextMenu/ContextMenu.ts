@@ -1,13 +1,8 @@
 import * as Assert from '../Assert/Assert.ts'
 import * as ContextMenuBrowser from '../ContextMenuBrowser/ContextMenuBrowser.ts'
 import * as ContextMenuElectron from '../ContextMenuElectron/ContextMenuElectron.ts'
+import { hasContextMenuNativePreference } from '../HasContextMenuNativePreference/HasContextMenuNativePreference.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
-import * as Preferences from '../Preferences/Preferences.ts'
-
-const hasContextMenuNativePreference = async (): Promise<boolean> => {
-  const value = await Preferences.get('window.titleBarStyle')
-  return value === 'native'
-}
 
 const getModule = async (platform: number): Promise<any> => {
   if (platform === PlatformType.Electron && (await hasContextMenuNativePreference())) {
