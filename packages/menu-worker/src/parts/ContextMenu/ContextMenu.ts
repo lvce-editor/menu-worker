@@ -26,7 +26,7 @@ export const show2 = async (uid: number, menuId: number, x: number, y: number, .
   Assert.number(x)
   Assert.number(y)
   const platform = 0
-  const module = getModule(platform)
+  const module = await getModule(platform)
   // @ts-ignore
   return module.show2(uid, menuId, x, y, ...args)
 }
