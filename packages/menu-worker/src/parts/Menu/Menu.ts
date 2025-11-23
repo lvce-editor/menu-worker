@@ -3,7 +3,7 @@ import { getMenuBounds } from '../GetMenuBounds/GetMenuBounds.ts'
 import * as GetMenuEntriesWithKeyBindings from '../GetMenuEntriesWithKeyBindings/GetMenuEntriesWithKeyBindings.ts'
 import * as GetMenuVirtualDom from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
 import * as GetVisibleMenuItems from '../GetVisibleMenuItems/GetVisibleMenuItems.ts'
-import { addMenuInternal, getCount, reset } from '../InternalMenuState/InternalMenuState.ts'
+import { addMenuInternal, getCount } from '../InternalMenuState/InternalMenuState.ts'
 import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
 export const MENU_WIDTH = 150
@@ -76,10 +76,4 @@ export const show2 = async (uid: number, menuId: any, x: number, y: number, mous
   )
 }
 
-export const hide = async (restoreFocus = true): Promise<void> => {
-  if (getCount() === 0) {
-    return
-  }
-  reset()
-  await RendererProcess.invoke(/* Menu.hide */ 'Menu.hide', /* restoreFocus */ restoreFocus)
-}
+export { hide } from '../Hide/Hide.ts'
