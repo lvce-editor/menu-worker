@@ -1,6 +1,7 @@
 import { focusIndex } from '../FocusIndex/FocusIndex.ts'
 import { hideSubMenus } from '../HideSubMenus/HideSubMenus.ts'
 import { get, getCount, getLatestTimestamp, setTimestamp } from '../InternalMenuState/InternalMenuState.ts'
+import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 import { resolveAfterTimeout } from '../ResolveAfterTimeout/ResolveAfterTimeout.ts'
 import { showSubMenuAtEnter } from '../ShowSubMenu/ShowSubMenu.ts'
 
@@ -27,7 +28,7 @@ export const handleMouseEnter = async (level: number, index: number, enterX: num
   const item = menu.items[index]
   await focusIndex(menu, index)
   switch (item.flags) {
-    case /* SubMenu */ 4:
+    case MenuItemFlags.SubMenu:
       await showSubMenuAtEnter(menu.level, index, enterX, enterY)
       break
     default:
