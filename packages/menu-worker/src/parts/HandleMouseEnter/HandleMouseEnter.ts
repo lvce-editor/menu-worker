@@ -18,7 +18,7 @@ export const handleMouseEnter = async (level: number, index: number, enterX: num
     const subMenuEnterX = subMenu.enterX
     // TODO should check for triangle position here
     if (enterX >= subMenuEnterX) {
-      await new Promise(resolveAfterTimeout)
+      await resolveAfterTimeout()
       if (getLatestTimestamp() !== enterTimeStamp) {
         return
       }
