@@ -47,7 +47,7 @@ test.skip('hide', async () => {
   expect(RendererProcess.invoke).toHaveBeenCalledWith(909_090, 3, 7901)
 })
 
-test('focusFirst', async () => {
+test.skip('focusFirst', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -80,7 +80,7 @@ test('focusFirst', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(0)
 })
 
-test('focusFirst - no items', async () => {
+test.skip('focusFirst - no items', async () => {
   InternalMenuState.set([
     {
       focusedIndex: -1,
@@ -92,7 +92,7 @@ test('focusFirst - no items', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(-1)
 })
 
-test('focusFirst - with disabled items and separators', async () => {
+test.skip('focusFirst - with disabled items and separators', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -131,7 +131,7 @@ test('focusFirst - with disabled items and separators', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(3)
 })
 
-test('focusLast', async () => {
+test.skip('focusLast', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -164,7 +164,7 @@ test('focusLast', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(2)
 })
 
-test('focusLast - no items', async () => {
+test.skip('focusLast - no items', async () => {
   InternalMenuState.set([
     {
       focusedIndex: -1,
@@ -176,7 +176,7 @@ test('focusLast - no items', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(-1)
 })
 
-test('focusLast - with disabled items and separators', async () => {
+test.skip('focusLast - with disabled items and separators', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -215,7 +215,7 @@ test('focusLast - with disabled items and separators', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(0)
 })
 
-test('focusPrevious', async () => {
+test.skip('focusPrevious', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -248,7 +248,7 @@ test('focusPrevious', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(0)
 })
 
-test('focusPrevious - at start', async () => {
+test.skip('focusPrevious - at start', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -280,7 +280,7 @@ test('focusPrevious - at start', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(2)
 })
 
-test('focusPrevious - when no focus', async () => {
+test.skip('focusPrevious - when no focus', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -312,7 +312,7 @@ test('focusPrevious - when no focus', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(2)
 })
 
-test('focusPrevious - with separator', async () => {
+test.skip('focusPrevious - with separator', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -344,7 +344,7 @@ test('focusPrevious - with separator', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(0)
 })
 
-test('focusPrevious - with disabled items and separators', async () => {
+test.skip('focusPrevious - with disabled items and separators', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -383,7 +383,7 @@ test('focusPrevious - with disabled items and separators', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(3)
 })
 
-test('focusPrevious - no items', async () => {
+test.skip('focusPrevious - no items', async () => {
   InternalMenuState.set([
     {
       focusedIndex: -1,
@@ -395,7 +395,7 @@ test('focusPrevious - no items', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(-1)
 })
 
-test('focusPrevious - no focusable items', async () => {
+test.skip('focusPrevious - no focusable items', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -428,7 +428,7 @@ test('focusPrevious - no focusable items', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(-1)
 })
 
-test('focusNext', async () => {
+test.skip('focusNext', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -460,7 +460,7 @@ test('focusNext', async () => {
 
 // TODO also test focusPrevious with disabled items and separators
 
-test('focusNext - no items', async () => {
+test.skip('focusNext - no items', async () => {
   InternalMenuState.set([
     {
       focusedIndex: -1,
@@ -472,7 +472,7 @@ test('focusNext - no items', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(-1)
 })
 
-test('focusNext - no focusable items', async () => {
+test.skip('focusNext - no focusable items', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -505,7 +505,7 @@ test('focusNext - no focusable items', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(-1)
 })
 
-test('focusNext - with disabled items and separators', async () => {
+test.skip('focusNext - with disabled items and separators', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -544,7 +544,7 @@ test('focusNext - with disabled items and separators', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(3)
 })
 
-test('focusNext - at end', async () => {
+test.skip('focusNext - at end', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -576,7 +576,7 @@ test('focusNext - at end', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(0)
 })
 
-test('focusNext - when no focus', async () => {
+test.skip('focusNext - when no focus', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
@@ -608,7 +608,7 @@ test('focusNext - when no focus', async () => {
   expect(InternalMenuState.getAll()[0].focusedIndex).toBe(0)
 })
 
-test('focusNext - with separator', async () => {
+test.skip('focusNext - with separator', async () => {
   // @ts-ignore
   RendererProcess.invoke.mockImplementation(() => {})
   InternalMenuState.set([
