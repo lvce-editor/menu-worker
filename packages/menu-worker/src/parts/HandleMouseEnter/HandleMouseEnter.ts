@@ -6,6 +6,7 @@ import { resolveAfterTimeout } from '../ResolveAfterTimeout/ResolveAfterTimeout.
 import { showSubMenuAtEnter } from '../ShowSubMenu/ShowSubMenu.ts'
 
 export const handleMouseEnter = async (level: number, index: number, enterX: number, enterY: number, enterTimeStamp: number): Promise<any> => {
+  console.log({ level, index, enterX, enterY, enterTimeStamp })
   setTimestamp(enterTimeStamp)
   if (level >= getCount()) {
     return

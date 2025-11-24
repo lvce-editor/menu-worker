@@ -1,4 +1,4 @@
-import { getAll } from '../InternalMenuState/InternalMenuState.ts'
+import { RendererProcess } from '@lvce-editor/rpc-registry'
 
 export const focusIndex = async (menu: any, index: number): Promise<any> => {
   if (menu.items.length === 0) {
@@ -6,8 +6,5 @@ export const focusIndex = async (menu: any, index: number): Promise<any> => {
   }
   const oldFocusedIndex = menu.focusedIndex
   menu.focusedIndex = index
-  return {
-    commands: [/* Menu.focusIndex */ 'Menu.focusIndex', /* level */ menu.level, /* oldFocusedIndex */ oldFocusedIndex, /* newFocusedIndex */ index],
-    menus: getAll(),
-  }
+  await RendererProcess.invoke('Menu.focusIndex', /* level */ menu.level, /* oldFocusedIndex */ oldFocusedIndex, /* newFocusedIndex */ index)
 }
