@@ -32,7 +32,7 @@ export const getMenuEntries = async (id: any, ...args: any): Promise<any> => {
   return RendererWorker.invoke('Menu.getMenuEntries', id, ...args)
 }
 
-export const getMenuEntries2 = async (uid: any, menuId: number, ...args: readonly any[]): Promise<any> => {
+export const getMenuEntries2 = async (uid: number, menuId: number, ...args: readonly any[]): Promise<any> => {
   // @ts-ignore
   return RendererWorker.invoke('Menu.getMenuEntries2', uid, menuId, ...args)
 }
