@@ -23,7 +23,7 @@ export const getMenuEntriesWithKeyBindings = async (id: any, ...args: readonly a
   return newMenuEntries
 }
 
-export const getMenuEntriesWithKeyBindings2 = async (uid: any, menuId: any, ...args: readonly any[]): Promise<any> => {
+export const getMenuEntriesWithKeyBindings2 = async (uid: number, menuId: number, ...args: readonly any[]): Promise<any> => {
   // @ts-ignore
   const menuEntries = await MenuEntries.getMenuEntries2(uid, menuId, ...args)
   const newMenuEntries = addKeyBindings(menuEntries)
