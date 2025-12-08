@@ -4,12 +4,12 @@ import * as GetMenuItemNoopDom from '../src/parts/GetMenuItemNoopDom/GetMenuItem
 
 test('getMenuItemsNoopDom returns empty array', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'Test Item',
+    level: 0,
   }
   const result = GetMenuItemNoopDom.getMenuItemsNoopDom(menuItem)
   expect(result).toEqual([])
@@ -18,20 +18,20 @@ test('getMenuItemsNoopDom returns empty array', () => {
 
 test('getMenuItemsNoopDom returns empty array regardless of menuItem properties', () => {
   const menuItem1: VisibleMenuItem = {
-    label: 'First Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 10,
+    label: 'First Item',
+    level: 0,
   }
   const menuItem2: VisibleMenuItem = {
-    label: 'Second Item',
     flags: 999,
-    isFocused: true,
     isExpanded: true,
-    level: 5,
+    isFocused: true,
     key: 42,
+    label: 'Second Item',
+    level: 5,
   }
   const result1 = GetMenuItemNoopDom.getMenuItemsNoopDom(menuItem1)
   const result2 = GetMenuItemNoopDom.getMenuItemsNoopDom(menuItem2)
@@ -43,12 +43,12 @@ test('getMenuItemsNoopDom returns empty array regardless of menuItem properties'
 
 test('getMenuItemsNoopDom returns empty array for empty label', () => {
   const menuItem: VisibleMenuItem = {
-    label: '',
     flags: 0,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: '',
+    level: 0,
   }
   const result = GetMenuItemNoopDom.getMenuItemsNoopDom(menuItem)
   expect(result).toEqual([])
@@ -56,12 +56,12 @@ test('getMenuItemsNoopDom returns empty array for empty label', () => {
 
 test('getMenuItemsNoopDom always returns same empty array reference', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'Test Item',
+    level: 0,
   }
   const result1 = GetMenuItemNoopDom.getMenuItemsNoopDom(menuItem)
   const result2 = GetMenuItemNoopDom.getMenuItemsNoopDom(menuItem)

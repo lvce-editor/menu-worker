@@ -6,12 +6,12 @@ import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
 const checkboxUnchecked: VirtualDomNode = {
-  type: VirtualDomElements.Div,
+  ariaChecked: false,
+  childCount: 1,
   className: ClassNames.MenuItem,
   role: AriaRoles.MenuItemCheckBox,
-  ariaChecked: false,
   tabIndex: -1,
-  childCount: 1,
+  type: VirtualDomElements.Div,
 }
 
 export const getMenuItemUncheckedDom = (menuItem: VisibleMenuItem): readonly VirtualDomNode[] => {

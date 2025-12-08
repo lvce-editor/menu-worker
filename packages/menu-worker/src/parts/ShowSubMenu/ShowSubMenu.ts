@@ -13,14 +13,14 @@ export const showSubMenuAtEnter = async (level: number, index: number, enterX: n
   const item = parentMenu.items[index]
   const subMenuItems = await getMenuEntries(item.id)
   const subMenu = addMenuInternal({
-    id: item.id,
-    items: subMenuItems,
-    focusedIndex: -1,
-    level: getCount(),
-    y: parentMenu.y + index * 25,
-    x: parentMenu.x + MENU_WIDTH,
     enterX,
     enterY,
+    focusedIndex: -1,
+    id: item.id,
+    items: subMenuItems,
+    level: getCount(),
+    x: parentMenu.x + MENU_WIDTH,
+    y: parentMenu.y + index * 25,
   })
   const width = getMenuWidth()
   const height = getMenuHeight(subMenuItems)

@@ -12,10 +12,10 @@ const toMenuItem = (folder: string): MenuEntry => {
   const homeDir = Workspace.getHomeDir()
   const label = PathDisplay.getTitle(homeDir, folder)
   return {
-    label,
-    flags: MenuItemFlags.None,
-    command: 'Workspace.setPath',
     args: [folder],
+    command: 'Workspace.setPath',
+    flags: MenuItemFlags.None,
+    label,
   }
 }
 
@@ -30,17 +30,17 @@ export const getMenuEntries = async (): Promise<readonly MenuEntry[]> => {
   }
   items.push(
     {
+      command: 'QuickPick.showRecent',
+      flags: MenuItemFlags.None,
       id: 'more',
       label: '...',
-      flags: MenuItemFlags.None,
-      command: 'QuickPick.showRecent',
     },
     MenuEntrySeparator.menuEntrySeparator,
     {
+      command: 'RecentlyOpened.clearRecentlyOpened',
+      flags: MenuItemFlags.None,
       id: 'clearRecentlyOpened',
       label: 'clear',
-      flags: MenuItemFlags.None,
-      command: 'RecentlyOpened.clearRecentlyOpened',
     },
   )
   return items

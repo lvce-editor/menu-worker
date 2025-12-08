@@ -7,12 +7,12 @@ import * as VirtualDomElements from '../src/parts/VirtualDomElements/VirtualDomE
 
 test('getMenuItemDisabledDom returns array with div and text', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'Test Item',
+    level: 0,
   }
   const result = GetMenuItemDisabledDom.getMenuItemDisabledDom(menuItem)
   expect(result).toHaveLength(2)
@@ -20,88 +20,88 @@ test('getMenuItemDisabledDom returns array with div and text', () => {
 
 test('getMenuItemDisabledDom returns div with correct properties', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'Test Item',
+    level: 0,
   }
   const result = GetMenuItemDisabledDom.getMenuItemDisabledDom(menuItem)
   expect(result[0]).toEqual({
-    type: VirtualDomElements.Div,
+    childCount: 1,
     className: ClassNames.MenuItem,
+    disabled: true,
     role: AriaRoles.MenuItem,
     tabIndex: -1,
-    disabled: true,
-    childCount: 1,
+    type: VirtualDomElements.Div,
   })
 })
 
 test('getMenuItemDisabledDom returns text node with correct label', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'Test Item',
+    level: 0,
   }
   const result = GetMenuItemDisabledDom.getMenuItemDisabledDom(menuItem)
   expect(result[1]).toEqual({
-    type: VirtualDomElements.Text,
-    text: 'Test Item',
     childCount: 0,
+    text: 'Test Item',
+    type: VirtualDomElements.Text,
   })
 })
 
 test('getMenuItemDisabledDom handles different labels', () => {
   const menuItem1: VisibleMenuItem = {
-    label: 'First Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'First Item',
+    level: 0,
   }
   const menuItem2: VisibleMenuItem = {
-    label: 'Second Item',
     flags: 2,
-    isFocused: true,
     isExpanded: true,
-    level: 1,
+    isFocused: true,
     key: 20,
+    label: 'Second Item',
+    level: 1,
   }
   const result1 = GetMenuItemDisabledDom.getMenuItemDisabledDom(menuItem1)
   const result2 = GetMenuItemDisabledDom.getMenuItemDisabledDom(menuItem2)
   expect(result1[1]).toEqual({
-    type: VirtualDomElements.Text,
-    text: 'First Item',
     childCount: 0,
+    text: 'First Item',
+    type: VirtualDomElements.Text,
   })
   expect(result2[1]).toEqual({
-    type: VirtualDomElements.Text,
-    text: 'Second Item',
     childCount: 0,
+    text: 'Second Item',
+    type: VirtualDomElements.Text,
   })
 })
 
 test('getMenuItemDisabledDom div properties are consistent regardless of menuItem properties', () => {
   const menuItem1: VisibleMenuItem = {
-    label: 'Item 1',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 10,
+    label: 'Item 1',
+    level: 0,
   }
   const menuItem2: VisibleMenuItem = {
-    label: 'Item 2',
     flags: 2,
-    isFocused: true,
     isExpanded: true,
-    level: 2,
+    isFocused: true,
     key: 30,
+    label: 'Item 2',
+    level: 2,
   }
   const result1 = GetMenuItemDisabledDom.getMenuItemDisabledDom(menuItem1)
   const result2 = GetMenuItemDisabledDom.getMenuItemDisabledDom(menuItem2)

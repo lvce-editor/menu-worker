@@ -23,17 +23,17 @@ test('getMenuEntries should return menu entries with more and clear when no rece
   const result = await MenuEntriesOpenRecent.getMenuEntries()
   expect(result.length).toBe(3)
   expect(result[0]).toEqual({
+    command: 'QuickPick.showRecent',
+    flags: 0,
     id: 'more',
     label: '...',
-    flags: 0,
-    command: 'QuickPick.showRecent',
   })
   expect(result[1].id).toBe('separator')
   expect(result[2]).toEqual({
+    command: 'RecentlyOpened.clearRecentlyOpened',
+    flags: 0,
     id: 'clearRecentlyOpened',
     label: 'clear',
-    flags: 0,
-    command: 'RecentlyOpened.clearRecentlyOpened',
   })
 })
 
@@ -52,16 +52,16 @@ test('getMenuEntries should return menu entries with recent items, separator, mo
   const result = await MenuEntriesOpenRecent.getMenuEntries()
   expect(result.length).toBe(6)
   expect(result[0]).toEqual({
-    label: '/home/user/project1',
-    flags: 0,
-    command: 'Workspace.setPath',
     args: ['file:///home/user/project1'],
+    command: 'Workspace.setPath',
+    flags: 0,
+    label: '/home/user/project1',
   })
   expect(result[1]).toEqual({
-    label: '/home/user/project2',
-    flags: 0,
-    command: 'Workspace.setPath',
     args: ['file:///home/user/project2'],
+    command: 'Workspace.setPath',
+    flags: 0,
+    label: '/home/user/project2',
   })
   expect(result[2].id).toBe('separator')
   expect(result[3].id).toBe('more')

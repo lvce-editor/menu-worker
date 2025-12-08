@@ -53,9 +53,9 @@ export const getMenuBounds = (x: number, y: number, items: readonly any[]): any 
   }
 
   return {
+    height: menuHeight,
+    width: menuWidth,
     x,
     y,
-    width: menuWidth,
-    height: menuHeight,
   }
 }

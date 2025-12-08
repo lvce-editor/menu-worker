@@ -8,12 +8,12 @@ import * as VirtualDomElements from '../src/parts/VirtualDomElements/VirtualDomE
 
 test('getMenuItemCheckedDom returns array with checkbox, checkmark, and text', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 10,
+    label: 'Test Item',
+    level: 0,
   }
   const result = GetMenuItemCheckedDom.getMenuItemCheckedDom(menuItem)
   expect(result).toHaveLength(3)
@@ -21,104 +21,104 @@ test('getMenuItemCheckedDom returns array with checkbox, checkmark, and text', (
 
 test('getMenuItemCheckedDom returns checkbox with correct properties', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 10,
+    label: 'Test Item',
+    level: 0,
   }
   const result = GetMenuItemCheckedDom.getMenuItemCheckedDom(menuItem)
   expect(result[0]).toEqual({
-    type: VirtualDomElements.Div,
+    ariaChecked: true,
+    childCount: 2,
     className: MergeClassNames.mergeClassNames(ClassNames.MenuItem, ClassNames.MenuItemCheckMark),
     role: AriaRoles.MenuItemCheckBox,
-    ariaChecked: true,
     tabIndex: -1,
-    childCount: 2,
+    type: VirtualDomElements.Div,
   })
 })
 
 test('getMenuItemCheckedDom returns checkmark with correct properties', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 10,
+    label: 'Test Item',
+    level: 0,
   }
   const result = GetMenuItemCheckedDom.getMenuItemCheckedDom(menuItem)
   expect(result[1]).toEqual({
-    type: VirtualDomElements.Div,
     className: MergeClassNames.mergeClassNames(ClassNames.MenuItemCheckmarkIcon, ClassNames.MaskIconCheck),
+    type: VirtualDomElements.Div,
   })
 })
 
 test('getMenuItemCheckedDom returns text node with correct label', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 10,
+    label: 'Test Item',
+    level: 0,
   }
   const result = GetMenuItemCheckedDom.getMenuItemCheckedDom(menuItem)
   expect(result[2]).toEqual({
-    type: VirtualDomElements.Text,
-    text: 'Test Item',
     childCount: 0,
+    text: 'Test Item',
+    type: VirtualDomElements.Text,
   })
 })
 
 test('getMenuItemCheckedDom handles different labels', () => {
   const menuItem1: VisibleMenuItem = {
-    label: 'First Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 10,
+    label: 'First Item',
+    level: 0,
   }
   const menuItem2: VisibleMenuItem = {
-    label: 'Second Item',
     flags: 2,
-    isFocused: true,
     isExpanded: true,
-    level: 1,
+    isFocused: true,
     key: 20,
+    label: 'Second Item',
+    level: 1,
   }
   const result1 = GetMenuItemCheckedDom.getMenuItemCheckedDom(menuItem1)
   const result2 = GetMenuItemCheckedDom.getMenuItemCheckedDom(menuItem2)
   expect(result1[2]).toEqual({
-    type: VirtualDomElements.Text,
-    text: 'First Item',
     childCount: 0,
+    text: 'First Item',
+    type: VirtualDomElements.Text,
   })
   expect(result2[2]).toEqual({
-    type: VirtualDomElements.Text,
-    text: 'Second Item',
     childCount: 0,
+    text: 'Second Item',
+    type: VirtualDomElements.Text,
   })
 })
 
 test('getMenuItemCheckedDom checkbox and checkmark properties are consistent regardless of menuItem properties', () => {
   const menuItem1: VisibleMenuItem = {
-    label: 'Item 1',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 10,
+    label: 'Item 1',
+    level: 0,
   }
   const menuItem2: VisibleMenuItem = {
-    label: 'Item 2',
     flags: 2,
-    isFocused: true,
     isExpanded: true,
-    level: 2,
+    isFocused: true,
     key: 30,
+    label: 'Item 2',
+    level: 2,
   }
   const result1 = GetMenuItemCheckedDom.getMenuItemCheckedDom(menuItem1)
   const result2 = GetMenuItemCheckedDom.getMenuItemCheckedDom(menuItem2)

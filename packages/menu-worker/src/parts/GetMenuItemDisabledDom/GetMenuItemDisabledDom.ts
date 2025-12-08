@@ -6,12 +6,12 @@ import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
 const disabled: VirtualDomNode = {
-  type: VirtualDomElements.Div,
+  childCount: 1,
   className: ClassNames.MenuItem,
+  disabled: true,
   role: AriaRoles.MenuItem,
   tabIndex: -1,
-  disabled: true,
-  childCount: 1,
+  type: VirtualDomElements.Div,
 }
 
 export const getMenuItemDisabledDom = (menuItem: VisibleMenuItem): readonly VirtualDomNode[] => {

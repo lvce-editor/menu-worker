@@ -5,43 +5,43 @@ import * as WhenExpression from '../WhenExpression/WhenExpression.ts'
 export const getKeyBindings = (): readonly KeyBinding[] => {
   return [
     {
-      key: KeyCode.DownArrow,
       command: 'TitleBarMenuBar.handleKeyArrowDown',
+      key: KeyCode.DownArrow,
       when: WhenExpression.FocusTitleBarMenuBar,
     },
     {
-      key: KeyCode.UpArrow,
       command: 'TitleBarMenuBar.handleKeyArrowUp',
+      key: KeyCode.UpArrow,
       when: WhenExpression.FocusTitleBarMenuBar,
     },
     {
-      key: KeyCode.RightArrow,
       command: 'TitleBarMenuBar.handleKeyArrowRight',
+      key: KeyCode.RightArrow,
       when: WhenExpression.FocusTitleBarMenuBar,
     },
     {
-      key: KeyCode.LeftArrow,
       command: 'TitleBarMenuBar.handleKeyArrowLeft',
+      key: KeyCode.LeftArrow,
       when: WhenExpression.FocusTitleBarMenuBar,
     },
     {
-      key: KeyCode.Space,
       command: 'TitleBarMenuBar.handleKeySpace',
+      key: KeyCode.Space,
       when: WhenExpression.FocusTitleBarMenuBar,
     },
     {
-      key: KeyCode.Home,
       command: 'TitleBarMenuBar.handleKeyHome',
+      key: KeyCode.Home,
       when: WhenExpression.FocusTitleBarMenuBar,
     },
     {
-      key: KeyCode.End,
       command: 'TitleBarMenuBar.handleKeyEnd',
+      key: KeyCode.End,
       when: WhenExpression.FocusTitleBarMenuBar,
     },
     {
-      key: KeyCode.Escape,
       command: 'TitleBarMenuBar.handleKeyEscape',
+      key: KeyCode.Escape,
       when: WhenExpression.FocusTitleBarMenuBar,
     },
   ]

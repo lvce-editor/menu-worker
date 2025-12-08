@@ -55,22 +55,22 @@ test.skip('focusFirst', async () => {
       focusedIndex: 2,
       items: [
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFile',
           name: 'new File',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          children: [],
         },
       ],
     },
@@ -100,28 +100,28 @@ test.skip('focusFirst - with disabled items and separators', async () => {
       focusedIndex: 2,
       items: [
         {
+          command: /* None */ 0,
+          flags: /* Disabled */ 5,
           id: 'newFile',
           name: 'new File',
-          flags: /* Disabled */ 5,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: /* Disabled */ 5,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* Disabled */ 5,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: MenuItemFlags.Separator,
           id: 'separator',
           label: 'Separator',
-          flags: MenuItemFlags.Separator,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          command: /* None */ 0,
         },
       ],
     },
@@ -139,22 +139,22 @@ test.skip('focusLast', async () => {
       focusedIndex: 0,
       items: [
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFile',
           name: 'new File',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          children: [],
         },
       ],
     },
@@ -184,28 +184,28 @@ test.skip('focusLast - with disabled items and separators', async () => {
       focusedIndex: 2,
       items: [
         {
+          command: /* None */ 0,
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: /* Disabled */ 5,
           id: 'newFile',
           name: 'new File',
-          flags: /* Disabled */ 5,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: /* Disabled */ 5,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* Disabled */ 5,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: MenuItemFlags.Separator,
           id: 'separator',
           label: 'Separator',
-          flags: MenuItemFlags.Separator,
-          command: /* None */ 0,
         },
       ],
     },
@@ -223,22 +223,22 @@ test.skip('focusPrevious', async () => {
       focusedIndex: 1,
       items: [
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFile',
           name: 'new File',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          children: [],
         },
       ],
     },
@@ -256,22 +256,22 @@ test.skip('focusPrevious - at start', async () => {
       focusedIndex: 0,
       items: [
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFile',
           name: 'new File',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          children: [],
         },
       ],
     },
@@ -288,22 +288,22 @@ test.skip('focusPrevious - when no focus', async () => {
       focusedIndex: -1,
       items: [
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFile',
           name: 'new File',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          children: [],
         },
       ],
     },
@@ -320,22 +320,22 @@ test.skip('focusPrevious - with separator', async () => {
       focusedIndex: 2,
       items: [
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFile',
           name: 'new File',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: MenuItemFlags.Separator,
           id: 'separator',
           name: 'Separator',
-          flags: MenuItemFlags.Separator,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          children: [],
         },
       ],
     },
@@ -352,28 +352,28 @@ test.skip('focusPrevious - with disabled items and separators', async () => {
       focusedIndex: 2,
       items: [
         {
+          command: /* None */ 0,
+          flags: /* Disabled */ 5,
           id: 'newFile',
           name: 'new File',
-          flags: /* Disabled */ 5,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: /* Disabled */ 5,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* Disabled */ 5,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: MenuItemFlags.Separator,
           id: 'separator',
           label: 'Separator',
-          flags: MenuItemFlags.Separator,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          command: /* None */ 0,
         },
       ],
     },
@@ -403,22 +403,22 @@ test.skip('focusPrevious - no focusable items', async () => {
       focusedIndex: -1,
       items: [
         {
+          command: /* None */ 0,
+          flags: /* Disabled */ 5,
           id: 'newFile',
           name: 'new File',
-          flags: /* Disabled */ 5,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: /* Disabled */ 5,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* Disabled */ 5,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: MenuItemFlags.Separator,
           id: 'separator',
           label: 'Separator',
-          flags: MenuItemFlags.Separator,
-          command: /* None */ 0,
         },
       ],
     },
@@ -436,19 +436,19 @@ test.skip('focusNext', async () => {
       focusedIndex: 0,
       items: [
         {
+          flags: /* None */ 0,
           id: 'newFile',
           name: 'new File',
-          flags: /* None */ 0,
         },
         {
+          flags: /* None */ 0,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* None */ 0,
         },
         {
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
         },
       ],
     },
@@ -480,22 +480,22 @@ test.skip('focusNext - no focusable items', async () => {
       focusedIndex: -1,
       items: [
         {
+          command: /* None */ 0,
+          flags: /* Disabled */ 5,
           id: 'newFile',
           name: 'new File',
-          flags: /* Disabled */ 5,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: /* Disabled */ 5,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* Disabled */ 5,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: MenuItemFlags.Separator,
           id: 'separator',
           label: 'Separator',
-          flags: MenuItemFlags.Separator,
-          command: /* None */ 0,
         },
       ],
     },
@@ -513,28 +513,28 @@ test.skip('focusNext - with disabled items and separators', async () => {
       focusedIndex: -1,
       items: [
         {
+          command: /* None */ 0,
+          flags: /* Disabled */ 5,
           id: 'newFile',
           name: 'new File',
-          flags: /* Disabled */ 5,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: /* Disabled */ 5,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* Disabled */ 5,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: MenuItemFlags.Separator,
           id: 'separator',
           label: 'Separator',
-          flags: MenuItemFlags.Separator,
-          command: /* None */ 0,
         },
         {
+          command: /* None */ 0,
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          command: /* None */ 0,
         },
       ],
     },
@@ -552,22 +552,22 @@ test.skip('focusNext - at end', async () => {
       focusedIndex: 2,
       items: [
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFile',
           name: 'new File',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          children: [],
         },
       ],
     },
@@ -584,22 +584,22 @@ test.skip('focusNext - when no focus', async () => {
       focusedIndex: -1,
       items: [
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFile',
           name: 'new File',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFolder',
           name: 'new Folder',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          children: [],
         },
       ],
     },
@@ -616,22 +616,22 @@ test.skip('focusNext - with separator', async () => {
       focusedIndex: 0,
       items: [
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newFile',
           name: 'new File',
-          flags: /* None */ 0,
-          children: [],
         },
         {
+          children: [],
+          flags: MenuItemFlags.Separator,
           id: 'separator',
           name: 'Separator',
-          flags: MenuItemFlags.Separator,
-          children: [],
         },
         {
+          children: [],
+          flags: /* None */ 0,
           id: 'newWindow',
           name: 'new Window',
-          flags: /* None */ 0,
-          children: [],
         },
       ],
     },
@@ -644,22 +644,22 @@ test.skip('resetFocusedIndex', async () => {
   // InternalMenuState.focs .focusedIndex = 2
   InternalMenuState.set([
     {
+      children: [],
+      flags: /* None */ 0,
       id: 'newFile',
       name: 'new File',
-      flags: /* None */ 0,
-      children: [],
     },
     {
+      children: [],
+      flags: /* None */ 0,
       id: 'newFolder',
       name: 'new Folder',
-      flags: /* None */ 0,
-      children: [],
     },
     {
+      children: [],
+      flags: /* None */ 0,
       id: 'newWindow',
       name: 'new Window',
-      flags: /* None */ 0,
-      children: [],
     },
   ])
   // await resetFocusedIndex()
@@ -672,35 +672,35 @@ test.skip('focusIndexMouse - focusing submenu index should show submenu', async 
   InternalMenuState.set([
     {
       focusedIndex: 0,
+      items: [
+        {
+          flags: /* None */ 0,
+          id: 'newFile',
+          name: 'new File',
+        },
+        {
+          flags: MenuItemFlags.Separator,
+          id: 'separator',
+          name: 'Separator',
+        },
+        {
+          flags: /* SubMenu */ 4,
+          id: 'openRecent',
+          name: 'Open Recent',
+        },
+      ],
       level: 0,
       x: 0,
       y: 0,
-      items: [
-        {
-          id: 'newFile',
-          name: 'new File',
-          flags: /* None */ 0,
-        },
-        {
-          id: 'separator',
-          name: 'Separator',
-          flags: MenuItemFlags.Separator,
-        },
-        {
-          id: 'openRecent',
-          name: 'Open Recent',
-          flags: /* SubMenu */ 4,
-        },
-      ],
     },
   ])
   // @ts-ignore
   SharedProcess.invoke.mockImplementation((message) => {
     switch (message.method) {
-      case 'Platform.getRecentlyOpenedPath':
-        return '/test/recently-opened.json'
       case 'FileSystem.readFile':
         return '["/test/folder-1"]'
+      case 'Platform.getRecentlyOpenedPath':
+        return '/test/recently-opened.json'
       default:
         throw new Error('unexpected message')
     }
@@ -759,32 +759,29 @@ test.skip('focusIndexMouse - focusing submenu index should do nothing when alrea
   InternalMenuState.set([
     {
       focusedIndex: 2,
+      items: [
+        {
+          flags: /* None */ 0,
+          id: 'newFile',
+          name: 'new File',
+        },
+        {
+          flags: MenuItemFlags.Separator,
+          id: 'separator',
+          name: 'Separator',
+        },
+        {
+          flags: /* SubMenu */ 4,
+          id: 'openRecent',
+          name: 'Open Recent',
+        },
+      ],
       level: 0,
       x: 0,
       y: 0,
-      items: [
-        {
-          id: 'newFile',
-          name: 'new File',
-          flags: /* None */ 0,
-        },
-        {
-          id: 'separator',
-          name: 'Separator',
-          flags: MenuItemFlags.Separator,
-        },
-        {
-          id: 'openRecent',
-          name: 'Open Recent',
-          flags: /* SubMenu */ 4,
-        },
-      ],
     },
     {
       focusedIndex: 0,
-      level: 1,
-      x: 0,
-      y: 0,
       items: [
         {
           command: -1,
@@ -816,25 +813,28 @@ test.skip('focusIndexMouse - focusing submenu index should do nothing when alrea
           label: 'Clear Recently Opened',
         },
       ],
+      level: 1,
+      x: 0,
+      y: 0,
     },
   ])
   // @ts-ignore
   SharedProcess.invoke.mockImplementation((message) => {
     switch (message.method) {
-      case 'Platform.getRecentlyOpenedPath':
-        // @ts-ignore
-        SharedProcess.state.receive({
-          id: message.id,
-          jsonrpc: '2.0',
-          result: '/test/recently-opened.json',
-        })
-        break
       case 'FileSystem.readFile':
         // @ts-ignore
         SharedProcess.state.receive({
           id: message.id,
           jsonrpc: '2.0',
           result: '["/test/folder-1"]',
+        })
+        break
+      case 'Platform.getRecentlyOpenedPath':
+        // @ts-ignore
+        SharedProcess.state.receive({
+          id: message.id,
+          jsonrpc: '2.0',
+          result: '/test/recently-opened.json',
         })
         break
       default:
@@ -853,32 +853,29 @@ test.skip('selectIndex - should do nothing when already focused', async () => {
   InternalMenuState.set([
     {
       focusedIndex: 2,
+      items: [
+        {
+          flags: /* None */ 0,
+          id: 'newFile',
+          name: 'new File',
+        },
+        {
+          flags: MenuItemFlags.Separator,
+          id: 'separator',
+          name: 'Separator',
+        },
+        {
+          flags: /* SubMenu */ 4,
+          id: 'openRecent',
+          name: 'Open Recent',
+        },
+      ],
       level: 0,
       x: 0,
       y: 0,
-      items: [
-        {
-          id: 'newFile',
-          name: 'new File',
-          flags: /* None */ 0,
-        },
-        {
-          id: 'separator',
-          name: 'Separator',
-          flags: MenuItemFlags.Separator,
-        },
-        {
-          id: 'openRecent',
-          name: 'Open Recent',
-          flags: /* SubMenu */ 4,
-        },
-      ],
     },
     {
       focusedIndex: 0,
-      level: 1,
-      x: 0,
-      y: 0,
       items: [
         {
           command: -1,
@@ -910,15 +907,18 @@ test.skip('selectIndex - should do nothing when already focused', async () => {
           label: 'Clear Recently Opened',
         },
       ],
+      level: 1,
+      x: 0,
+      y: 0,
     },
   ])
   // @ts-ignore
   SharedProcess.invoke.mockImplementation((message) => {
     switch (message.method) {
-      case 'Platform.getRecentlyOpenedPath':
-        return '/test/recently-opened.json'
       case 'FileSystem.readFile':
         return '["/test/folder-1"]'
+      case 'Platform.getRecentlyOpenedPath':
+        return '/test/recently-opened.json'
       default:
         throw new Error('unexpected message')
     }
@@ -937,19 +937,19 @@ test.skip('focusIndexMouse - focusing other index should hide submenu', async ()
       focusedIndex: 0,
       items: [
         {
+          flags: /* None */ 0,
           id: 'newFile',
           name: 'new File',
-          flags: /* None */ 0,
         },
         {
+          flags: MenuItemFlags.Separator,
           id: 'separator',
           name: 'Separator',
-          flags: MenuItemFlags.Separator,
         },
         {
+          flags: /* SubMenu */ 4,
           id: 'openRecent',
           name: 'Open Recent',
-          flags: /* SubMenu */ 4,
         },
       ],
     },
@@ -957,9 +957,9 @@ test.skip('focusIndexMouse - focusing other index should hide submenu', async ()
       focusedIndex: 0,
       items: [
         {
+          flags: /* None */ 0,
           id: 'more',
           name: 'More...',
-          flags: /* None */ 0,
         },
       ],
     },
