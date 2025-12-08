@@ -4,9 +4,9 @@ import * as I18NString from '../I18NString/I18NString.ts'
  * @enum {string}
  */
 const UiStrings = {
-  SplitTerminal: 'Split Terminal',
   KillTerminal: 'Kill Terminal',
   NewTerminal: 'New Terminal',
+  SplitTerminal: 'Split Terminal',
 }
 
 export const newTerminal = (): string => {

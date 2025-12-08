@@ -7,12 +7,12 @@ import * as VirtualDomElements from '../src/parts/VirtualDomElements/VirtualDomE
 
 test('getMenuItemSeparatorDom returns array with two elements', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 10,
+    label: 'Test Item',
+    level: 0,
   }
   const result = GetMenuItemSeparatorDom.getMenuItemSeparatorDom(menuItem)
   expect(result).toHaveLength(2)
@@ -20,55 +20,55 @@ test('getMenuItemSeparatorDom returns array with two elements', () => {
 
 test('getMenuItemSeparatorDom returns separator with correct properties', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 10,
+    label: 'Test Item',
+    level: 0,
   }
   const result = GetMenuItemSeparatorDom.getMenuItemSeparatorDom(menuItem)
   expect(result[0]).toEqual({
-    type: VirtualDomElements.Div,
+    childCount: 1,
     className: ClassNames.MenuItemSeparator,
     role: AriaRoles.Separator,
-    childCount: 1,
+    type: VirtualDomElements.Div,
   })
 })
 
 test('getMenuItemSeparatorDom returns separatorLine with correct properties', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 10,
+    label: 'Test Item',
+    level: 0,
   }
   const result = GetMenuItemSeparatorDom.getMenuItemSeparatorDom(menuItem)
   expect(result[1]).toEqual({
-    type: VirtualDomElements.Div,
-    className: ClassNames.MenuItemSeparatorLine,
     childCount: 0,
+    className: ClassNames.MenuItemSeparatorLine,
+    type: VirtualDomElements.Div,
   })
 })
 
 test('getMenuItemSeparatorDom returns same result regardless of menuItem properties', () => {
   const menuItem1: VisibleMenuItem = {
-    label: 'Item 1',
     flags: 1,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 10,
+    label: 'Item 1',
+    level: 0,
   }
   const menuItem2: VisibleMenuItem = {
-    label: 'Item 2',
     flags: 2,
-    isFocused: true,
     isExpanded: true,
-    level: 2,
+    isFocused: true,
     key: 30,
+    label: 'Item 2',
+    level: 2,
   }
   const result1 = GetMenuItemSeparatorDom.getMenuItemSeparatorDom(menuItem1)
   const result2 = GetMenuItemSeparatorDom.getMenuItemSeparatorDom(menuItem2)

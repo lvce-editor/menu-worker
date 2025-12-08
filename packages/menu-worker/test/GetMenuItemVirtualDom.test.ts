@@ -5,12 +5,12 @@ import * as MenuItemFlags from '../src/parts/MenuItemFlags/MenuItemFlags.ts'
 
 test('getMenuItemVirtualDom returns default dom for None flag', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: MenuItemFlags.None,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'Test Item',
+    level: 0,
   }
   const result = GetMenuItemVirtualDom.getMenuItemVirtualDom(menuItem)
   expect(result).toBeDefined()
@@ -20,12 +20,12 @@ test('getMenuItemVirtualDom returns default dom for None flag', () => {
 
 test('getMenuItemVirtualDom returns separator dom for Separator flag', () => {
   const menuItem: VisibleMenuItem = {
-    label: '',
     flags: MenuItemFlags.Separator,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: '',
+    level: 0,
   }
   const result = GetMenuItemVirtualDom.getMenuItemVirtualDom(menuItem)
   expect(result).toBeDefined()
@@ -35,12 +35,12 @@ test('getMenuItemVirtualDom returns separator dom for Separator flag', () => {
 
 test('getMenuItemVirtualDom returns checked dom for Checked flag', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Checked Item',
     flags: MenuItemFlags.Checked,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'Checked Item',
+    level: 0,
   }
   const result = GetMenuItemVirtualDom.getMenuItemVirtualDom(menuItem)
   expect(result).toBeDefined()
@@ -50,12 +50,12 @@ test('getMenuItemVirtualDom returns checked dom for Checked flag', () => {
 
 test('getMenuItemVirtualDom returns unchecked dom for Unchecked flag', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Unchecked Item',
     flags: MenuItemFlags.Unchecked,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'Unchecked Item',
+    level: 0,
   }
   const result = GetMenuItemVirtualDom.getMenuItemVirtualDom(menuItem)
   expect(result).toBeDefined()
@@ -65,12 +65,12 @@ test('getMenuItemVirtualDom returns unchecked dom for Unchecked flag', () => {
 
 test('getMenuItemVirtualDom returns disabled dom for Disabled flag', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Disabled Item',
     flags: MenuItemFlags.Disabled,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'Disabled Item',
+    level: 0,
   }
   const result = GetMenuItemVirtualDom.getMenuItemVirtualDom(menuItem)
   expect(result).toBeDefined()
@@ -80,12 +80,12 @@ test('getMenuItemVirtualDom returns disabled dom for Disabled flag', () => {
 
 test('getMenuItemVirtualDom returns submenu dom for SubMenu flag', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'SubMenu Item',
     flags: MenuItemFlags.SubMenu,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'SubMenu Item',
+    level: 0,
   }
   const result = GetMenuItemVirtualDom.getMenuItemVirtualDom(menuItem)
   expect(result).toBeDefined()
@@ -95,12 +95,12 @@ test('getMenuItemVirtualDom returns submenu dom for SubMenu flag', () => {
 
 test('getMenuItemVirtualDom returns default dom for RestoreFocus flag', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Restore Focus Item',
     flags: MenuItemFlags.RestoreFocus,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'Restore Focus Item',
+    level: 0,
   }
   const result = GetMenuItemVirtualDom.getMenuItemVirtualDom(menuItem)
   expect(result).toBeDefined()
@@ -110,12 +110,12 @@ test('getMenuItemVirtualDom returns default dom for RestoreFocus flag', () => {
 
 test('getMenuItemVirtualDom returns default dom for Ignore flag', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Ignore Item',
     flags: MenuItemFlags.Ignore,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'Ignore Item',
+    level: 0,
   }
   const result = GetMenuItemVirtualDom.getMenuItemVirtualDom(menuItem)
   expect(result).toBeDefined()
@@ -125,12 +125,12 @@ test('getMenuItemVirtualDom returns default dom for Ignore flag', () => {
 
 test('getMenuItemVirtualDom returns noop dom for unknown flag', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Unknown Item',
     flags: 999,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'Unknown Item',
+    level: 0,
   }
   const result = GetMenuItemVirtualDom.getMenuItemVirtualDom(menuItem)
   expect(result).toBeDefined()
@@ -139,12 +139,12 @@ test('getMenuItemVirtualDom returns noop dom for unknown flag', () => {
 
 test('getMenuItemVirtualDom passes menuItem to renderer', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Test Item',
     flags: MenuItemFlags.None,
-    isFocused: true,
     isExpanded: true,
-    level: 2,
+    isFocused: true,
     key: 42,
+    label: 'Test Item',
+    level: 2,
   }
   const result = GetMenuItemVirtualDom.getMenuItemVirtualDom(menuItem)
   expect(result).toBeDefined()

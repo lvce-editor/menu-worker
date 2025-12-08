@@ -7,144 +7,144 @@ import * as VirtualDomElements from '../src/parts/VirtualDomElements/VirtualDomE
 
 test('getMenuItemSubMenuDom - basic case', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'File',
     flags: 0,
-    isFocused: false,
     isExpanded: false,
-    level: 0,
+    isFocused: false,
     key: 0,
+    label: 'File',
+    level: 0,
   }
   const result = GetMenuItemSubMenuDom.getMenuItemSubMenuDom(menuItem)
   expect(result).toHaveLength(3)
   expect(result[0]).toEqual({
-    type: VirtualDomElements.Div,
+    ariaExpanded: false,
+    ariaHasPopup: true,
+    ariaOwns: undefined,
+    childCount: 2,
     className: `${ClassNames.MenuItem} ${ClassNames.MenuItemSubMenu}`,
     role: AriaRoles.MenuItem,
     tabIndex: -1,
-    ariaHasPopup: true,
-    ariaExpanded: false,
-    ariaOwns: undefined,
-    childCount: 2,
+    type: VirtualDomElements.Div,
   })
   expect(result[1]).toEqual({
-    type: VirtualDomElements.Text,
-    text: 'File',
     childCount: 0,
+    text: 'File',
+    type: VirtualDomElements.Text,
   })
   expect(result[2]).toEqual({
-    type: VirtualDomElements.Div,
-    className: ClassNames.MenuItemSubMenuArrowRight,
     childCount: 0,
+    className: ClassNames.MenuItemSubMenuArrowRight,
+    type: VirtualDomElements.Div,
   })
 })
 
 test('getMenuItemSubMenuDom - focused case', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Edit',
     flags: 0,
-    isFocused: true,
     isExpanded: false,
-    level: 0,
+    isFocused: true,
     key: 0,
+    label: 'Edit',
+    level: 0,
   }
   const result = GetMenuItemSubMenuDom.getMenuItemSubMenuDom(menuItem)
   expect(result).toHaveLength(3)
   expect(result[0]).toEqual({
-    type: VirtualDomElements.Div,
+    ariaExpanded: false,
+    ariaHasPopup: true,
+    ariaOwns: undefined,
+    childCount: 2,
     className: `${ClassNames.MenuItem} ${ClassNames.MenuItemSubMenu} ${ClassNames.MenuItemFocused}`,
     role: AriaRoles.MenuItem,
     tabIndex: -1,
-    ariaHasPopup: true,
-    ariaExpanded: false,
-    ariaOwns: undefined,
-    childCount: 2,
+    type: VirtualDomElements.Div,
   })
   expect(result[1]).toEqual({
-    type: VirtualDomElements.Text,
-    text: 'Edit',
     childCount: 0,
+    text: 'Edit',
+    type: VirtualDomElements.Text,
   })
   expect(result[2]).toEqual({
-    type: VirtualDomElements.Div,
-    className: ClassNames.MenuItemSubMenuArrowRight,
     childCount: 0,
+    className: ClassNames.MenuItemSubMenuArrowRight,
+    type: VirtualDomElements.Div,
   })
 })
 
 test('getMenuItemSubMenuDom - expanded case', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'View',
     flags: 0,
-    isFocused: false,
     isExpanded: true,
-    level: 1,
+    isFocused: false,
     key: 0,
+    label: 'View',
+    level: 1,
   }
   const result = GetMenuItemSubMenuDom.getMenuItemSubMenuDom(menuItem)
   expect(result).toHaveLength(3)
   expect(result[0]).toEqual({
-    type: VirtualDomElements.Div,
+    ariaExpanded: true,
+    ariaHasPopup: true,
+    ariaOwns: 'Menu-2',
+    childCount: 2,
     className: `${ClassNames.MenuItem} ${ClassNames.MenuItemSubMenu}`,
     role: AriaRoles.MenuItem,
     tabIndex: -1,
-    ariaHasPopup: true,
-    ariaExpanded: true,
-    ariaOwns: 'Menu-2',
-    childCount: 2,
+    type: VirtualDomElements.Div,
   })
   expect(result[1]).toEqual({
-    type: VirtualDomElements.Text,
-    text: 'View',
     childCount: 0,
+    text: 'View',
+    type: VirtualDomElements.Text,
   })
   expect(result[2]).toEqual({
-    type: VirtualDomElements.Div,
-    className: ClassNames.MenuItemSubMenuArrowRight,
     childCount: 0,
+    className: ClassNames.MenuItemSubMenuArrowRight,
+    type: VirtualDomElements.Div,
   })
 })
 
 test('getMenuItemSubMenuDom - focused and expanded case', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Help',
     flags: 0,
-    isFocused: true,
     isExpanded: true,
-    level: 2,
+    isFocused: true,
     key: 0,
+    label: 'Help',
+    level: 2,
   }
   const result = GetMenuItemSubMenuDom.getMenuItemSubMenuDom(menuItem)
   expect(result).toHaveLength(3)
   expect(result[0]).toEqual({
-    type: VirtualDomElements.Div,
+    ariaExpanded: true,
+    ariaHasPopup: true,
+    ariaOwns: 'Menu-3',
+    childCount: 2,
     className: `${ClassNames.MenuItem} ${ClassNames.MenuItemSubMenu} ${ClassNames.MenuItemFocused}`,
     role: AriaRoles.MenuItem,
     tabIndex: -1,
-    ariaHasPopup: true,
-    ariaExpanded: true,
-    ariaOwns: 'Menu-3',
-    childCount: 2,
+    type: VirtualDomElements.Div,
   })
   expect(result[1]).toEqual({
-    type: VirtualDomElements.Text,
-    text: 'Help',
     childCount: 0,
+    text: 'Help',
+    type: VirtualDomElements.Text,
   })
   expect(result[2]).toEqual({
-    type: VirtualDomElements.Div,
-    className: ClassNames.MenuItemSubMenuArrowRight,
     childCount: 0,
+    className: ClassNames.MenuItemSubMenuArrowRight,
+    type: VirtualDomElements.Div,
   })
 })
 
 test('getMenuItemSubMenuDom - different level', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Submenu',
     flags: 0,
-    isFocused: false,
     isExpanded: true,
-    level: 5,
+    isFocused: false,
     key: 0,
+    label: 'Submenu',
+    level: 5,
   }
   const result = GetMenuItemSubMenuDom.getMenuItemSubMenuDom(menuItem)
   expect(result[0].ariaOwns).toBe('Menu-6')
@@ -152,12 +152,12 @@ test('getMenuItemSubMenuDom - different level', () => {
 
 test('getMenuItemSubMenuDom - not expanded should not have ariaOwns', () => {
   const menuItem: VisibleMenuItem = {
-    label: 'Item',
     flags: 0,
-    isFocused: false,
     isExpanded: false,
-    level: 3,
+    isFocused: false,
     key: 0,
+    label: 'Item',
+    level: 3,
   }
   const result = GetMenuItemSubMenuDom.getMenuItemSubMenuDom(menuItem)
   expect(result[0].ariaOwns).toBeUndefined()

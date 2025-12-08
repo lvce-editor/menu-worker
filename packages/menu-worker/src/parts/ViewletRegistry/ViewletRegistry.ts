@@ -9,7 +9,7 @@ export const create = <T>(): IViewletRegistry<T> => {
       return states[uid]
     },
     set(uid, oldState: T, newState: T): void {
-      states[uid] = { oldState, newState }
+      states[uid] = { newState, oldState }
     },
   }
 }

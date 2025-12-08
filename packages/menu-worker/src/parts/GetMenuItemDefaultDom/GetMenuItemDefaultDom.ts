@@ -8,18 +8,18 @@ import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
 export const getMenuItemDefaultDom = (menuItem: VisibleMenuItem): readonly VirtualDomNode[] => {
-  const { label, isFocused, key } = menuItem
+  const { isFocused, key, label } = menuItem
   let className = ClassNames.MenuItem
   if (isFocused) {
     className += ' ' + ClassNames.MenuItemFocused
   }
   const dom: any[] = [
     {
-      type: VirtualDomElements.Div,
+      childCount: 1,
       className,
       role: AriaRoles.MenuItem,
       tabIndex: -1,
-      childCount: 1,
+      type: VirtualDomElements.Div,
     },
     text(label),
   ]
@@ -29,9 +29,9 @@ export const getMenuItemDefaultDom = (menuItem: VisibleMenuItem): readonly Virtu
     const keyBindingsString = GetKeyBindingsString.getKeyBindingString(parsedKey.key, false, parsedKey.isCtrl, parsedKey.isShift, false)
     dom.push(
       {
-        type: VirtualDomElements.Span,
-        className: ClassNames.MenuItemKeyBinding,
         childCount: 1,
+        className: ClassNames.MenuItemKeyBinding,
+        type: VirtualDomElements.Span,
       },
       text(keyBindingsString),
     )

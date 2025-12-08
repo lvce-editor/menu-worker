@@ -5,21 +5,21 @@ import * as DiffType from '../src/parts/DiffType/DiffType.ts'
 
 const createMenuState = (focusedIndex: number, isMenuOpen: boolean): MenuState => {
   return {
-    uid: 0,
-    titleBarEntries: [],
     focusedIndex,
+    height: 0,
     isMenuOpen,
-    menus: [],
-    labelFontWeight: 0,
     labelFontFamily: '',
     labelFontSize: 0,
-    labelPadding: 0,
+    labelFontWeight: 0,
     labelLetterSpacing: 0,
+    labelPadding: 0,
+    menus: [],
+    titleBarEntries: [],
     titleBarHeight: 0,
+    uid: 0,
+    width: 0,
     x: 0,
     y: 0,
-    width: 0,
-    height: 0,
   }
 }
 

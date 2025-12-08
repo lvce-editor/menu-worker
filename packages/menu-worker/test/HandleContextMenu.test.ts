@@ -4,21 +4,21 @@ import * as HandleContextMenu from '../src/parts/HandleContextMenu/HandleContext
 
 const createMenuState = (): MenuState => {
   return {
-    uid: 0,
-    titleBarEntries: [],
     focusedIndex: 0,
+    height: 0,
     isMenuOpen: false,
-    menus: [],
-    labelFontWeight: 0,
     labelFontFamily: '',
     labelFontSize: 0,
-    labelPadding: 0,
+    labelFontWeight: 0,
     labelLetterSpacing: 0,
+    labelPadding: 0,
+    menus: [],
+    titleBarEntries: [],
     titleBarHeight: 0,
+    uid: 0,
+    width: 0,
     x: 0,
     y: 0,
-    width: 0,
-    height: 0,
   }
 }
 
@@ -30,21 +30,21 @@ test('handleContextMenu returns the same state', () => {
 
 test('handleContextMenu returns state with different properties', () => {
   const state: MenuState = {
-    uid: 1,
-    titleBarEntries: [],
     focusedIndex: 5,
+    height: 600,
     isMenuOpen: true,
-    menus: [],
-    labelFontWeight: 400,
     labelFontFamily: 'Arial',
     labelFontSize: 14,
-    labelPadding: 10,
+    labelFontWeight: 400,
     labelLetterSpacing: 0.5,
+    labelPadding: 10,
+    menus: [],
+    titleBarEntries: [],
     titleBarHeight: 30,
+    uid: 1,
+    width: 500,
     x: 100,
     y: 200,
-    width: 500,
-    height: 600,
   }
   const result = HandleContextMenu.handleContextMenu(state)
   expect(result).toBe(state)

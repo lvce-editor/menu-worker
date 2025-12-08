@@ -4,12 +4,12 @@ import * as Logger from '../Logger/Logger.ts'
 import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
 export const state = {
-  keyBindings: [],
-  keyBindingSets: Object.create(null),
   /**
    * @type {Uint32Array}
    */
   keyBindingIdentifiers: new Uint32Array(),
+  keyBindings: [],
+  keyBindingSets: Object.create(null),
   /**
    * @type {any}
    */

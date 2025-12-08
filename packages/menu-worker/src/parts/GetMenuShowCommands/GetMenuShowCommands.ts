@@ -19,9 +19,9 @@ import { addMenuInternal, getAll, getCount } from '../InternalMenuState/Internal
 export const getMenuShowCommands = async (items: any, menuId: any, x: number, y: number, mouseBlocking = false): Promise<any> => {
   const bounds = getMenuBounds(x, y, items)
   const menu = addMenuInternal({
+    focusedIndex: -1,
     id: menuId,
     items,
-    focusedIndex: -1,
     level: getCount(),
     x: bounds.x,
     y: bounds.y,
@@ -29,8 +29,6 @@ export const getMenuShowCommands = async (items: any, menuId: any, x: number, y:
   const visible = GetVisibleMenuItems.getVisible(menu.items, -1, false, menu.level)
   const dom = GetMenuVirtualDom.getMenuVirtualDom(visible).slice(1)
   return {
-    menus: getAll(),
-    menu,
     commands: [
       /* Menu.show */ 'Menu.showMenu',
       /* x */ bounds.x,
@@ -43,5 +41,7 @@ export const getMenuShowCommands = async (items: any, menuId: any, x: number, y:
       /* dom */ dom,
       /* mouseBlocking */ mouseBlocking,
     ],
+    menu,
+    menus: getAll(),
   }
 }

@@ -8,14 +8,14 @@
 // TODO this code seems a bit too complicated, maybe it can be simplified
 
 interface State {
-  menus: any[]
-  latestTimeStamp: number
   enterTimeout: number
+  latestTimeStamp: number
+  menus: any[]
 }
 const state: State = {
-  menus: [],
-  latestTimeStamp: 0,
   enterTimeout: -1,
+  latestTimeStamp: 0,
+  menus: [],
 }
 
 export const addMenuInternal = (menu: any): any => {
