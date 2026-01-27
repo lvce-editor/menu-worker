@@ -27,6 +27,8 @@ const selectIndexIgnore = async (menu: any, item: any): Promise<void> => {
 
 const getSelectIndexFunction = (flags: number): any => {
   switch (flags) {
+    case MenuItemFlags.Checked:
+      return selectIndexRestoreFocus
     case MenuItemFlags.Ignore:
       return selectIndexIgnore
     case MenuItemFlags.None:
@@ -35,6 +37,8 @@ const getSelectIndexFunction = (flags: number): any => {
       return selectIndexRestoreFocus
     case MenuItemFlags.SubMenu:
       return selectIndexSubMenu
+    case MenuItemFlags.Unchecked:
+      return selectIndexRestoreFocus
     default:
       return selectIndexDefault
   }
