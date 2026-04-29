@@ -1,5 +1,5 @@
 import type { MenuState } from '../MenuState/MenuState.ts'
-import * as TitleBarMenuBarStates from '../MenuStates/MenuStates.ts'
+import * as MenuStates from '../MenuStates/MenuStates.ts'
 
 export interface WrappedFn {
   (uid: number, ...args: readonly any[]): Promise<void>
@@ -11,13 +11,13 @@ interface Fn {
 
 export const wrapCommand = (fn: Fn): WrappedFn => {
   const wrapped = async (uid: number, ...args: readonly any[]): Promise<void> => {
-    const { newState } = TitleBarMenuBarStates.get(uid)
+    const { newState } = MenuStates.get(uid)
     const newerState = await fn(newState, ...args)
     if (newState === newerState) {
       return
     }
-    const latest = TitleBarMenuBarStates.get(uid)
-    TitleBarMenuBarStates.set(uid, latest.oldState, newerState)
+    const latest = MenuStates.get(uid)
+    MenuStates.set(uid, latest.oldState, newerState)
   }
   return wrapped
 }
