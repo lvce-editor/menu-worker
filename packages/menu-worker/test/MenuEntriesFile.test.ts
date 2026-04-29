@@ -25,16 +25,16 @@ test('getMenuEntries returns correct entries for Web platform', () => {
 test('getMenuEntries returns correct entries for Remote platform', () => {
   const entries = MenuEntriesFile.getMenuEntries(PlatformType.Remote)
   expect(entries.length).toBe(9)
-  expect(entries.at(-1).id).toBe('saveAll')
+  expect(entries.at(-1)?.id).toBe('saveAll')
 })
 
 test('getMenuEntries returns correct entries for Electron platform', () => {
   const entries = MenuEntriesFile.getMenuEntries(PlatformType.Electron)
   expect(entries.length).toBe(11)
   expect(entries[entries.length - 2].flags).toBe(MenuItemFlags.Separator)
-  expect(entries.at(-1).id).toBe('exit')
-  expect(entries.at(-1).flags).toBe(MenuItemFlags.Ignore)
-  expect(entries.at(-1).command).toBe('Chrome.exit')
+  expect(entries.at(-1)?.id).toBe('exit')
+  expect(entries.at(-1)?.flags).toBe(MenuItemFlags.Ignore)
+  expect(entries.at(-1)?.command).toBe('Chrome.exit')
 })
 
 test('getMenuEntries has correct structure for all entries', () => {
