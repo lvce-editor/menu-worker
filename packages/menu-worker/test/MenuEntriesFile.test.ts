@@ -31,7 +31,7 @@ test('getMenuEntries returns correct entries for Remote platform', () => {
 test('getMenuEntries returns correct entries for Electron platform', () => {
   const entries = MenuEntriesFile.getMenuEntries(PlatformType.Electron)
   expect(entries.length).toBe(11)
-  expect(entries.at(-2)?.flags).toBe(MenuItemFlags.Separator)
+  expect(entries[entries.length - 2].flags).toBe(MenuItemFlags.Separator)
   expect(entries.at(-1)?.id).toBe('exit')
   expect(entries.at(-1)?.flags).toBe(MenuItemFlags.Ignore)
   expect(entries.at(-1)?.command).toBe('Chrome.exit')
