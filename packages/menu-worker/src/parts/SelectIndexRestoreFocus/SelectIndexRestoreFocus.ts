@@ -2,5 +2,6 @@ import * as ExecuteMenuItemCommand from '../ExecuteMenuItemCommand/ExecuteMenuIt
 import { hide } from '../Hide/Hide.ts'
 
 export const selectIndexRestoreFocus = async (menu: any, item: any): Promise<void> => {
-  await Promise.all([hide(/* restoreFocus */ true), ExecuteMenuItemCommand.executeMenuItemCommand(item)])
+  await hide(/* restoreFocus */ true)
+  await ExecuteMenuItemCommand.executeMenuItemCommand(item)
 }
