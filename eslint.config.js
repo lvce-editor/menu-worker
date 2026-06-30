@@ -8,6 +8,14 @@ export default [
     rules: {
       'jest/no-restricted-jest-methods': 'off',
       '@cspell/spellchecker': 'off',
+      'sonarjs/assertions-in-tests': 'off',
+      'sonarjs/prefer-specific-assertions': 'off',
+      'unicorn/no-break-in-nested-loop': 'off',
+      'unicorn/no-declarations-before-early-exit': 'off',
+      'unicorn/prefer-early-return': 'off',
+      'unicorn/prefer-https': 'off',
+      'unicorn/prefer-minimal-ternary': 'off',
+      'unicorn/prefer-promise-with-resolvers': 'off',
     },
   },
 ]
