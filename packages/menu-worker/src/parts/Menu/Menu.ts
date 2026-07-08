@@ -24,7 +24,7 @@ export * from '../GetMenuHeight/GetMenuHeight.ts'
 
 export const show = async (x: number, y: number, id: any, mouseBlocking = false, ...args: readonly any[]): Promise<void> => {
   const items = await GetMenuEntriesWithKeyBindings.getMenuEntriesWithKeyBindings(id, ...args)
-  const bounds = getMenuBounds(x, y, items)
+  const bounds = await getMenuBounds(x, y, items)
   const menu = addMenuInternal({
     focusedIndex: -1,
     id,
@@ -51,7 +51,7 @@ export const show = async (x: number, y: number, id: any, mouseBlocking = false,
 
 export const show2 = async (uid: number, menuId: any, x: number, y: number, mouseBlocking = false, ...args: readonly any[]): Promise<any> => {
   const items = await GetMenuEntriesWithKeyBindings.getMenuEntriesWithKeyBindings2(uid, menuId, ...args)
-  const bounds = getMenuBounds(x, y, items)
+  const bounds = await getMenuBounds(x, y, items)
   const menu = addMenuInternal({
     focusedIndex: -1,
     id: menuId,
