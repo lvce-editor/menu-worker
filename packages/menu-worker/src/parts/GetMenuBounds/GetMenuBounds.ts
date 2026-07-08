@@ -1,7 +1,8 @@
 // TODO lazyload menuEntries and use Command.execute (maybe)
+import * as GetMenuMeasuredWidth from '../GetMenuMeasuredWidth/GetMenuMeasuredWidth.ts'
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 
-const CONTEXT_MENU_WIDTH = 250
+const MENU_TARGET_GAP = 5
 
 // TODO difference between focusing with mouse or keyboard
 // with mouse -> open submenu
@@ -34,8 +35,8 @@ const getMenuHeight = (items: readonly any[]): number => {
   return height
 }
 
-export const getMenuBounds = (x: number, y: number, items: readonly any[]): any => {
-  const menuWidth = CONTEXT_MENU_WIDTH
+export const getMenuBounds = async (x: number, y: number, items: readonly any[]): Promise<any> => {
+  const menuWidth = await GetMenuMeasuredWidth.getMenuMeasuredWidth(items)
   const menuHeight = getMenuHeight(items)
   const layoutState = { points: [0, 0] }
   const windowWidth = layoutState.points[0]
@@ -44,7 +45,7 @@ export const getMenuBounds = (x: number, y: number, items: readonly any[]): any 
   // TODO what about separators?
 
   if (x + menuWidth > windowWidth) {
-    x -= menuWidth
+    x -= menuWidth + MENU_TARGET_GAP
     x = Math.max(x, 0)
   }
   if (y + menuHeight > windowHeight) {
