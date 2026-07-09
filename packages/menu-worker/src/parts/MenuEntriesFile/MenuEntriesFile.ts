@@ -43,13 +43,13 @@ export const getMenuEntries = (platform: number): readonly MenuEntry[] => {
     MenuEntrySeparator.menuEntrySeparator,
     {
       command: 'Main.save',
-      flags: MenuItemFlags.None,
+      flags: MenuItemFlags.Disabled,
       id: 'save',
       label: FileStrings.save(),
     },
     {
       command: 'Main.saveAll',
-      flags: MenuItemFlags.None,
+      flags: MenuItemFlags.Disabled,
       id: 'saveAll',
       label: FileStrings.saveAll(),
     },

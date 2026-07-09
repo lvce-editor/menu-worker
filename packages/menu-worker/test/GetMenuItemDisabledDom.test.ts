@@ -29,8 +29,9 @@ test('getMenuItemDisabledDom returns div with correct properties', () => {
   }
   const result = GetMenuItemDisabledDom.getMenuItemDisabledDom(menuItem)
   expect(result[0]).toEqual({
+    ariaDisabled: true,
     childCount: 1,
-    className: ClassNames.MenuItem,
+    className: `${ClassNames.MenuItem} ${ClassNames.MenuItemDisabled}`,
     disabled: true,
     role: AriaRoles.MenuItem,
     tabIndex: -1,
