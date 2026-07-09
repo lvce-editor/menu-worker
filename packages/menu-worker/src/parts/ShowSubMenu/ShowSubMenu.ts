@@ -4,21 +4,31 @@ import { getMenuVirtualDom } from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
 import { getVisible } from '../GetVisibleMenuItems/GetVisibleMenuItems.ts'
 import { addMenuInternal, get, getAll, getCount, set } from '../InternalMenuState/InternalMenuState.ts'
 import { getMenuWidth, MENU_WIDTH } from '../Menu/Menu.ts'
-import { getMenuEntries } from '../MenuEntries/MenuEntries.ts'
+import { getMenuEntries, getMenuEntries2 } from '../MenuEntries/MenuEntries.ts'
+
+const getSubMenuItems = async (parentMenu: any, item: any): Promise<any> => {
+  const args = item.args || parentMenu.args || []
+  if (typeof parentMenu.uid === 'number') {
+    return getMenuEntries2(parentMenu.uid, item.id, ...args)
+  }
+  return getMenuEntries(item.id, ...args)
+}
 
 export const showSubMenuAtEnter = async (level: number, index: number, enterX: number, enterY: number): Promise<void> => {
   // TODO delete old menus
   set(getAll().slice(0, level + 1))
   const parentMenu = get(level)
   const item = parentMenu.items[index]
-  const subMenuItems = await getMenuEntries(item.id)
+  const subMenuItems = await getSubMenuItems(parentMenu, item)
   const subMenu = addMenuInternal({
+    args: item.args || parentMenu.args || [],
     enterX,
     enterY,
     focusedIndex: -1,
     id: item.id,
     items: subMenuItems,
     level: getCount(),
+    uid: parentMenu.uid,
     x: parentMenu.x + MENU_WIDTH,
     y: parentMenu.y + index * 25,
   })

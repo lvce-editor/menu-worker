@@ -26,6 +26,7 @@ export const show = async (x: number, y: number, id: any, mouseBlocking = false,
   const items = await GetMenuEntriesWithKeyBindings.getMenuEntriesWithKeyBindings(id, ...args)
   const bounds = await getMenuBounds(x, y, items)
   const menu = addMenuInternal({
+    args,
     focusedIndex: -1,
     id,
     items,
@@ -53,10 +54,12 @@ export const show2 = async (uid: number, menuId: any, x: number, y: number, mous
   const items = await GetMenuEntriesWithKeyBindings.getMenuEntriesWithKeyBindings2(uid, menuId, ...args)
   const bounds = await getMenuBounds(x, y, items)
   const menu = addMenuInternal({
+    args,
     focusedIndex: -1,
     id: menuId,
     items,
     level: getCount(),
+    uid,
     x: bounds.x,
     y: bounds.y,
   })
