@@ -65,4 +65,6 @@ test('getMenuEntries has correct flags', () => {
   const entryMap = new Map(entries.map((entry) => [entry.id, entry]))
   expect(entryMap.get('openFolder')?.flags).toBe(MenuItemFlags.RestoreFocus)
   expect(entryMap.get(MenuEntryId.OpenRecent)?.flags).toBe(MenuItemFlags.SubMenu)
+  expect(entryMap.get('save')?.flags).toBe(MenuItemFlags.Disabled)
+  expect(entryMap.get('saveAll')?.flags).toBe(MenuItemFlags.Disabled)
 })
