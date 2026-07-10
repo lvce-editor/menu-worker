@@ -78,3 +78,45 @@ test('showSubMenuAtEnter uses show2 uid and submenu args when parent menu has ui
     expect.any(Array),
   )
 })
+
+test('showSubMenuAtEnter opens the submenu to the left when requested', async () => {
+  getMenuEntries2.mockResolvedValue([])
+  InternalMenuState.set([
+    {
+      args: [{ menuId: 1, openSubMenuToLeft: true }],
+      focusedIndex: 0,
+      id: 1,
+      items: [
+        {
+          args: [{ menuId: 2 }],
+          command: '',
+          flags: MenuItemFlags.SubMenu,
+          id: 2,
+          label: 'SimonSiefke (GitHub)',
+        },
+      ],
+      level: 0,
+      uid: 42,
+      x: 500,
+      y: 20,
+    },
+  ])
+
+  await showSubMenuAtEnter(0, 0, 12, 24)
+
+  expect(InternalMenuState.getAll()[1]).toMatchObject({
+    openSubMenuToLeft: true,
+    x: 350,
+  })
+  expect(rendererInvoke).toHaveBeenCalledWith(
+    'Menu.showMenu',
+    350,
+    20,
+    expect.any(Number),
+    expect.any(Number),
+    expect.any(Array),
+    1,
+    0,
+    expect.any(Array),
+  )
+})
