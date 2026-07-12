@@ -120,3 +120,34 @@ test('showSubMenuAtEnter opens the submenu to the left when requested', async ()
     expect.any(Array),
   )
 })
+
+test('showSubMenuAtEnter does nothing when the submenu is already open', async () => {
+  getMenuEntries2.mockResolvedValue([])
+  InternalMenuState.set([
+    {
+      args: [{ menuId: 1 }],
+      focusedIndex: 0,
+      id: 1,
+      items: [
+        {
+          args: [{ menuId: 2 }],
+          command: '',
+          flags: MenuItemFlags.SubMenu,
+          id: 2,
+          label: 'Appearance',
+        },
+      ],
+      level: 0,
+      uid: 42,
+      x: 10,
+      y: 20,
+    },
+  ])
+
+  await showSubMenuAtEnter(0, 0, 12, 24)
+  await showSubMenuAtEnter(0, 0, 13, 25)
+
+  expect(getMenuEntries2).toHaveBeenCalledTimes(1)
+  expect(rendererInvoke).toHaveBeenCalledTimes(1)
+  expect(InternalMenuState.getAll()).toHaveLength(2)
+})
