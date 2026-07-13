@@ -23,10 +23,13 @@ const getSubMenuX = (parentMenu: any, openSubMenuToLeft: boolean): number => {
 }
 
 export const showSubMenuAtEnter = async (level: number, index: number, enterX: number, enterY: number): Promise<void> => {
-  // TODO delete old menus
-  set(getAll().slice(0, level + 1))
   const parentMenu = get(level)
   const item = parentMenu.items[index]
+  const existingSubMenu = getAll()[level + 1]
+  if (existingSubMenu?.parentIndex === index && existingSubMenu.id === item.id) {
+    return
+  }
+  set(getAll().slice(0, level + 1))
   const subMenuItems = await getSubMenuItems(parentMenu, item)
   const openSubMenuToLeft = getOpenSubMenuToLeft(parentMenu)
   const subMenu = addMenuInternal({
@@ -38,6 +41,7 @@ export const showSubMenuAtEnter = async (level: number, index: number, enterX: n
     items: subMenuItems,
     level: getCount(),
     openSubMenuToLeft,
+    parentIndex: index,
     uid: parentMenu.uid,
     x: getSubMenuX(parentMenu, openSubMenuToLeft),
     y: parentMenu.y + index * 25,
