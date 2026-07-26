@@ -3,6 +3,9 @@
   "version": "0.0.0-dev",
   "main": "index.js",
   "type": "module",
+  "scripts": {
+    "build:watch": "esbuild --format=esm --bundle --external:node:buffer --external:electron --external:ws --external:node:worker_threads --watch ../menu-worker/src/menuWorkerMain.ts --outfile=../../.tmp/dist/dist/menuWorkerMain.js"
+  },
   "keywords": [],
   "author": "",
   "license": "MIT",
