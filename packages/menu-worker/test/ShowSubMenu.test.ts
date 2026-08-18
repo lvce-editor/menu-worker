@@ -11,10 +11,11 @@ jest.unstable_mockModule('../src/parts/MenuEntries/MenuEntries.ts', () => ({
   getMenuEntries2,
 }))
 
+jest.unstable_mockModule('../src/parts/RendererProcess/RendererProcess.js', () => ({
+  invoke: rendererInvoke,
+}))
+
 jest.unstable_mockModule('@lvce-editor/rpc-registry', () => ({
-  RendererProcess: {
-    invoke: rendererInvoke,
-  },
   RendererWorker: {
     invoke: jest.fn(),
   },

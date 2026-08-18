@@ -1,4 +1,4 @@
-import { RendererProcess } from '@lvce-editor/rpc-registry'
+import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
 export const focusIndex = async (menu: any, index: number): Promise<any> => {
   if (menu.items.length === 0) {

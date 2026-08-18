@@ -1,5 +1,5 @@
-import { RendererProcess } from '@lvce-editor/rpc-registry'
 import { getAll } from '../InternalMenuState/InternalMenuState.ts'
+import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
 export const closeSubMenu = async (): Promise<void> => {
   const menus = getAll()
