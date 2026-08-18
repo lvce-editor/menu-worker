@@ -1,10 +1,10 @@
-import { RendererProcess } from '@lvce-editor/rpc-registry'
 import { getMenuHeight } from '../GetMenuHeight/GetMenuHeight.ts'
 import { getMenuVirtualDom } from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
 import { getVisible } from '../GetVisibleMenuItems/GetVisibleMenuItems.ts'
 import { addMenuInternal, get, getAll, getCount, set } from '../InternalMenuState/InternalMenuState.ts'
 import { getMenuWidth, MENU_WIDTH } from '../Menu/Menu.ts'
 import { getMenuEntries, getMenuEntries2 } from '../MenuEntries/MenuEntries.ts'
+import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
 const getSubMenuItems = async (parentMenu: any, item: any): Promise<any> => {
   const args = item.args || parentMenu.args || []
