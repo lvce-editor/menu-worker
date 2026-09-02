@@ -3,7 +3,3 @@ import * as ElectronContextMenu from '../ElectronContextMenu/ElectronContextMenu
 export const show = (x: number, y: number, id: any, ...args: readonly unknown[]): Promise<void> => {
   return ElectronContextMenu.openContextMenu(x, y, id, ...args)
 }
-
-export const show2Below = (uid: number, menuId: number, x: number, y: number, ...args: readonly unknown[]): Promise<void> => {
-  return ElectronContextMenu.openContextMenu2(x, y, uid, menuId, ...args)
-}

@@ -38,5 +38,6 @@ export const show2Below = async (uid: number, menuId: number, x: number, y: numb
   Assert.number(y)
   const platform = 0
   const module = await getModule(platform)
+  // @ts-ignore
   return module.show2Below(uid, menuId, x, y, ...args)
 }
