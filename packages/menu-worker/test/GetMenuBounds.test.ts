@@ -32,3 +32,23 @@ test('keeps menu inside left edge', async () => {
 
   expect(bounds.x).toBe(0)
 })
+
+test('positions a dropdown below its target', async () => {
+  const bounds = await GetMenuBounds.getMenuBounds(
+    200,
+    100,
+    [
+      {
+        label: 'Sign Out',
+      },
+    ],
+    true,
+  )
+
+  expect(bounds).toEqual({
+    height: 34,
+    width: 150,
+    x: 45,
+    y: 100,
+  })
+})

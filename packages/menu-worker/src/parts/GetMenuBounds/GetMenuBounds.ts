@@ -35,7 +35,7 @@ const getMenuHeight = (items: readonly any[]): number => {
   return height
 }
 
-export const getMenuBounds = async (x: number, y: number, items: readonly any[]): Promise<any> => {
+export const getMenuBounds = async (x: number, y: number, items: readonly any[], openBelow = false): Promise<any> => {
   const menuWidth = await GetMenuMeasuredWidth.getMenuMeasuredWidth(items)
   const menuHeight = getMenuHeight(items)
   const layoutState = { points: [0, 0] }
@@ -48,7 +48,7 @@ export const getMenuBounds = async (x: number, y: number, items: readonly any[])
     x -= menuWidth + MENU_TARGET_GAP
     x = Math.max(x, 0)
   }
-  if (y + menuHeight > windowHeight) {
+  if (!openBelow && y + menuHeight > windowHeight) {
     y -= menuHeight
     y = Math.max(y, 0)
   }

@@ -56,5 +56,6 @@ export const commandMap = {
   'Menu.selectItem': selectItem,
   'Menu.show': ContextMenu.show,
   'Menu.show2': ContextMenu.show2,
+  'Menu.show2Below': ContextMenu.show2Below,
   'Menu.showSubMenu': showSubMenu,
 }
