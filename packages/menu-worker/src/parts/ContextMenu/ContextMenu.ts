@@ -30,3 +30,13 @@ export const show2 = async (uid: number, menuId: number, x: number, y: number, .
   // @ts-ignore
   return module.show2(uid, menuId, x, y, ...args)
 }
+
+export const show2Below = async (uid: number, menuId: number, x: number, y: number, ...args: readonly any[]): Promise<void> => {
+  Assert.number(uid)
+  Assert.number(menuId)
+  Assert.number(x)
+  Assert.number(y)
+  const platform = 0
+  const module = await getModule(platform)
+  return module.show2Below(uid, menuId, x, y, ...args)
+}

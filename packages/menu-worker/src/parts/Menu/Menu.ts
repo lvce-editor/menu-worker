@@ -50,9 +50,17 @@ export const show = async (x: number, y: number, id: any, mouseBlocking = false,
   )
 }
 
-export const show2 = async (uid: number, menuId: any, x: number, y: number, mouseBlocking = false, ...args: readonly any[]): Promise<any> => {
+const show2Internal = async (
+  uid: number,
+  menuId: any,
+  x: number,
+  y: number,
+  mouseBlocking: boolean,
+  openBelow: boolean,
+  ...args: readonly any[]
+): Promise<any> => {
   const items = await GetMenuEntriesWithKeyBindings.getMenuEntriesWithKeyBindings2(uid, menuId, ...args)
-  const bounds = await getMenuBounds(x, y, items)
+  const bounds = await getMenuBounds(x, y, items, openBelow)
   const menu = addMenuInternal({
     args,
     focusedIndex: -1,
@@ -77,6 +85,14 @@ export const show2 = async (uid: number, menuId: any, x: number, y: number, mous
     /* dom */ dom,
     /* mouseBlocking */ mouseBlocking,
   )
+}
+
+export const show2 = async (uid: number, menuId: any, x: number, y: number, mouseBlocking = false, ...args: readonly any[]): Promise<any> => {
+  return show2Internal(uid, menuId, x, y, mouseBlocking, false, ...args)
+}
+
+export const show2Below = async (uid: number, menuId: any, x: number, y: number, mouseBlocking = false, ...args: readonly any[]): Promise<any> => {
+  return show2Internal(uid, menuId, x, y, mouseBlocking, true, ...args)
 }
 
 export { hide } from '../Hide/Hide.ts'
