@@ -17,7 +17,7 @@ import { addMenuInternal, getAll, getCount } from '../InternalMenuState/Internal
 // TODO more tests
 
 export const getMenuShowCommands = async (items: any, menuId: any, x: number, y: number, mouseBlocking = false): Promise<any> => {
-  const bounds = getMenuBounds(x, y, items)
+  const bounds = await getMenuBounds(x, y, items)
   const menu = addMenuInternal({
     focusedIndex: -1,
     id: menuId,

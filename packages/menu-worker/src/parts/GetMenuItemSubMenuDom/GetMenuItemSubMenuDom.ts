@@ -2,6 +2,7 @@ import type { VirtualDomNode } from '../VirtualDomNode/VirtualDomNode.ts'
 import type { VisibleMenuItem } from '../VisibleMenuItem/VisibleMenuItem.ts'
 import * as AriaRoles from '../AriaRoles/AriaRoles.ts'
 import * as ClassNames from '../ClassNames/ClassNames.ts'
+import * as MergeClassNames from '../MergeClassNames/MergeClassNames.ts'
 import * as VirtualDomElements from '../VirtualDomElements/VirtualDomElements.ts'
 import { text } from '../VirtualDomHelpers/VirtualDomHelpers.ts'
 
@@ -13,10 +14,9 @@ const arrowRight: VirtualDomNode = {
 
 export const getMenuItemSubMenuDom = (menuItem: VisibleMenuItem): readonly VirtualDomNode[] => {
   const { isExpanded, isFocused, label, level } = menuItem
-  let className = ClassNames.MenuItem
-  className += ' ' + ClassNames.MenuItemSubMenu
+  let className = MergeClassNames.mergeClassNames(ClassNames.MenuItem, ClassNames.MenuItemSubMenu)
   if (isFocused) {
-    className += ' ' + ClassNames.MenuItemFocused
+    className = MergeClassNames.mergeClassNames(className, ClassNames.MenuItemFocused)
   }
   return [
     {

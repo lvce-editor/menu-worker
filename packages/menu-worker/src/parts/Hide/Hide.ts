@@ -1,5 +1,5 @@
-import { RendererProcess } from '@lvce-editor/rpc-registry'
 import { getMenuHideCommands } from '../GetMenuHideCommands/GetMenuHideCommands.ts'
+import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
 export const hide = async (restoreFocus = true): Promise<void> => {
   const { commands } = await getMenuHideCommands(restoreFocus)

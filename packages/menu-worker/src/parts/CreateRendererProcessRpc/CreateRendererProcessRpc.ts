@@ -3,7 +3,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 import { VError } from '@lvce-editor/verror'
 
 const send = (port: MessagePort): Promise<void> => {
-  return RendererWorker.sendMessagePortToRendererProcess(port)
+  return RendererWorker.sendMessagePortToRendererProcess(port, 'MenuWorker')
 }
 
 export const createRendererProcessRpc = async (): Promise<Rpc> => {

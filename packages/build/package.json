@@ -3,11 +3,15 @@
   "version": "0.0.0-dev",
   "main": "index.js",
   "type": "module",
+  "scripts": {
+    "build:watch": "esbuild --format=esm --bundle --external:node:buffer --external:electron --external:ws --external:node:worker_threads --watch ../menu-worker/src/menuWorkerMain.ts --outfile=../../.tmp/dist/dist/menuWorkerMain.js"
+  },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "@babel/preset-typescript": "^7.28.5",
+    "@lvce-editor/shared-process": "0.103.19",
     "@lvce-editor/verror": "^1.7.0",
     "@rollup/plugin-babel": "^7.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
