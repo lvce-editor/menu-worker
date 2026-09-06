@@ -19,7 +19,7 @@ const getOpenSubMenuToLeft = (parentMenu: any): boolean => {
 }
 
 const getSubMenuX = (parentMenu: any, openSubMenuToLeft: boolean): number => {
-  return openSubMenuToLeft ? parentMenu.x - MENU_WIDTH : parentMenu.x + MENU_WIDTH
+  return openSubMenuToLeft ? parentMenu.x - getMenuWidth() : parentMenu.x + MENU_WIDTH
 }
 
 export const showSubMenuAtEnter = async (level: number, index: number, enterX: number, enterY: number): Promise<void> => {

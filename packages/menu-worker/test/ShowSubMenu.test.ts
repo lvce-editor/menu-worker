@@ -107,11 +107,11 @@ test('showSubMenuAtEnter opens the submenu to the left when requested', async ()
 
   expect(InternalMenuState.getAll()[1]).toMatchObject({
     openSubMenuToLeft: true,
-    x: 350,
+    x: 250,
   })
   expect(rendererInvoke).toHaveBeenCalledWith(
     'Menu.showMenu',
-    350,
+    250,
     20,
     expect.any(Number),
     expect.any(Number),
