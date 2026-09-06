@@ -5,6 +5,11 @@ import * as MenuItemFlags from '../src/parts/MenuItemFlags/MenuItemFlags.ts'
 const getMenuEntries = jest.fn(async (..._args: readonly any[]): Promise<any> => [])
 const getMenuEntries2 = jest.fn(async (..._args: readonly any[]): Promise<any> => [])
 const rendererInvoke = jest.fn()
+const getMenuMeasuredWidth = jest.fn(async (_items: readonly any[]): Promise<number> => 220)
+
+jest.unstable_mockModule('../src/parts/GetMenuMeasuredWidth/GetMenuMeasuredWidth.ts', () => ({
+  getMenuMeasuredWidth,
+}))
 
 jest.unstable_mockModule('../src/parts/MenuEntries/MenuEntries.ts', () => ({
   getMenuEntries,
@@ -25,6 +30,7 @@ const { showSubMenuAtEnter } = await import('../src/parts/ShowSubMenu/ShowSubMen
 
 beforeEach(() => {
   jest.resetAllMocks()
+  getMenuMeasuredWidth.mockResolvedValue(220)
   InternalMenuState.reset()
 })
 
@@ -80,7 +86,8 @@ test('showSubMenuAtEnter uses show2 uid and submenu args when parent menu has ui
   )
 })
 
-test('showSubMenuAtEnter opens the submenu to the left when requested', async () => {
+test.each([150, 220, 300])('opens the submenu to the left using its measured width of %i', async (width) => {
+  getMenuMeasuredWidth.mockResolvedValue(width)
   getMenuEntries2.mockResolvedValue([])
   InternalMenuState.set([
     {
@@ -107,11 +114,11 @@ test('showSubMenuAtEnter opens the submenu to the left when requested', async ()
 
   expect(InternalMenuState.getAll()[1]).toMatchObject({
     openSubMenuToLeft: true,
-    x: 250,
+    x: 500 - width,
   })
   expect(rendererInvoke).toHaveBeenCalledWith(
     'Menu.showMenu',
-    250,
+    500 - width,
     20,
     expect.any(Number),
     expect.any(Number),
