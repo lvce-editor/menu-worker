@@ -27,6 +27,7 @@ jest.unstable_mockModule('@lvce-editor/rpc-registry', () => ({
 }))
 
 const { showSubMenuAtEnter } = await import('../src/parts/ShowSubMenu/ShowSubMenu.ts')
+const { selectIndex } = await import('../src/parts/SelectIndex/SelectIndex.ts')
 
 beforeEach(() => {
   jest.resetAllMocks()
@@ -178,4 +179,31 @@ test('left submenu remains on screen when its parent is near the left edge', asy
   await showSubMenuAtEnter(0, 0, 100, 20)
 
   expect(InternalMenuState.getAll()[1]).toMatchObject({ openSubMenuToLeft: true, x: 0 })
+})
+
+test.each([-1, 0])('selecting a submenu opens it when the focused index is %i', async (focusedIndex) => {
+  getMenuEntries2.mockResolvedValue([{ command: 'Extensions.filterByCategory', flags: MenuItemFlags.None, id: 'themes', label: 'Themes' }])
+  InternalMenuState.set([
+    {
+      args: [{ openSubMenuToLeft: true }],
+      focusedIndex,
+      id: 95,
+      items: [{ args: [{ menuId: 95, subMenu: 'category' }], flags: MenuItemFlags.SubMenu, id: 95, label: 'Category' }],
+      level: 0,
+      uid: 42,
+      x: 500,
+      y: 20,
+    },
+  ])
+
+  await selectIndex(0, 0)
+
+  expect(getMenuEntries2).toHaveBeenCalledWith(42, 95, { menuId: 95, subMenu: 'category' })
+  expect(InternalMenuState.getAll()).toHaveLength(2)
+  expect(InternalMenuState.getAll()[1].items[0].label).toBe('Themes')
+
+  await selectIndex(0, 0)
+
+  expect(getMenuEntries2).toHaveBeenCalledTimes(1)
+  expect(InternalMenuState.getAll()).toHaveLength(2)
 })
