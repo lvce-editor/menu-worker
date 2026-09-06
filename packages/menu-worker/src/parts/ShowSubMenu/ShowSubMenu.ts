@@ -1,8 +1,9 @@
 import { getMenuHeight } from '../GetMenuHeight/GetMenuHeight.ts'
+import { getMenuMeasuredWidth } from '../GetMenuMeasuredWidth/GetMenuMeasuredWidth.ts'
 import { getMenuVirtualDom } from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
 import { getVisible } from '../GetVisibleMenuItems/GetVisibleMenuItems.ts'
 import { addMenuInternal, get, getAll, getCount, set } from '../InternalMenuState/InternalMenuState.ts'
-import { getMenuWidth, MENU_WIDTH } from '../Menu/Menu.ts'
+import { MENU_WIDTH } from '../Menu/Menu.ts'
 import { getMenuEntries, getMenuEntries2 } from '../MenuEntries/MenuEntries.ts'
 import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
@@ -28,7 +29,7 @@ export const showSubMenuAtEnter = async (level: number, index: number, enterX: n
   set(getAll().slice(0, level + 1))
   const subMenuItems = await getSubMenuItems(parentMenu, item)
   const openSubMenuToLeft = getOpenSubMenuToLeft(parentMenu)
-  const width = getMenuWidth()
+  const width = await getMenuMeasuredWidth(subMenuItems)
   const subMenu = addMenuInternal({
     args: item.args || parentMenu.args || [],
     enterX,
