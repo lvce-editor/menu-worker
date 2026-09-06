@@ -152,3 +152,23 @@ test('showSubMenuAtEnter does nothing when the submenu is already open', async (
   expect(rendererInvoke).toHaveBeenCalledTimes(1)
   expect(InternalMenuState.getAll()).toHaveLength(2)
 })
+
+test('left submenu remains on screen when its parent is near the left edge', async () => {
+  getMenuEntries2.mockResolvedValue([])
+  InternalMenuState.set([
+    {
+      args: [{ openSubMenuToLeft: true }],
+      focusedIndex: 0,
+      id: 95,
+      items: [{ args: [{ menuId: 95, subMenu: 'category' }], flags: MenuItemFlags.SubMenu, id: 95, label: 'Category' }],
+      level: 0,
+      uid: 42,
+      x: 100,
+      y: 20,
+    },
+  ])
+
+  await showSubMenuAtEnter(0, 0, 100, 20)
+
+  expect(InternalMenuState.getAll()[1]).toMatchObject({ openSubMenuToLeft: true, x: 0 })
+})

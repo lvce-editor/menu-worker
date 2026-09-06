@@ -18,10 +18,6 @@ const getOpenSubMenuToLeft = (parentMenu: any): boolean => {
   return parentMenu.openSubMenuToLeft === true || parentMenu.args?.[0]?.openSubMenuToLeft === true
 }
 
-const getSubMenuX = (parentMenu: any, openSubMenuToLeft: boolean): number => {
-  return openSubMenuToLeft ? parentMenu.x - getMenuWidth() : parentMenu.x + MENU_WIDTH
-}
-
 export const showSubMenuAtEnter = async (level: number, index: number, enterX: number, enterY: number): Promise<void> => {
   const parentMenu = get(level)
   const item = parentMenu.items[index]
@@ -32,6 +28,7 @@ export const showSubMenuAtEnter = async (level: number, index: number, enterX: n
   set(getAll().slice(0, level + 1))
   const subMenuItems = await getSubMenuItems(parentMenu, item)
   const openSubMenuToLeft = getOpenSubMenuToLeft(parentMenu)
+  const width = getMenuWidth()
   const subMenu = addMenuInternal({
     args: item.args || parentMenu.args || [],
     enterX,
@@ -43,10 +40,9 @@ export const showSubMenuAtEnter = async (level: number, index: number, enterX: n
     openSubMenuToLeft,
     parentIndex: index,
     uid: parentMenu.uid,
-    x: getSubMenuX(parentMenu, openSubMenuToLeft),
+    x: openSubMenuToLeft ? Math.max(0, parentMenu.x - width) : parentMenu.x + MENU_WIDTH,
     y: parentMenu.y + index * 25,
   })
-  const width = getMenuWidth()
   const height = getMenuHeight(subMenuItems)
   const visible = getVisible(subMenu.items, -1, false, subMenu.level)
   const dom = getMenuVirtualDom(visible).slice(1)
