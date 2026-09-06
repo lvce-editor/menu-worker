@@ -107,11 +107,11 @@ test('showSubMenuAtEnter opens the submenu to the left when requested', async ()
 
   expect(InternalMenuState.getAll()[1]).toMatchObject({
     openSubMenuToLeft: true,
-    x: 350,
+    x: 250,
   })
   expect(rendererInvoke).toHaveBeenCalledWith(
     'Menu.showMenu',
-    350,
+    250,
     20,
     expect.any(Number),
     expect.any(Number),
@@ -151,4 +151,24 @@ test('showSubMenuAtEnter does nothing when the submenu is already open', async (
   expect(getMenuEntries2).toHaveBeenCalledTimes(1)
   expect(rendererInvoke).toHaveBeenCalledTimes(1)
   expect(InternalMenuState.getAll()).toHaveLength(2)
+})
+
+test('left submenu remains on screen when its parent is near the left edge', async () => {
+  getMenuEntries2.mockResolvedValue([])
+  InternalMenuState.set([
+    {
+      args: [{ openSubMenuToLeft: true }],
+      focusedIndex: 0,
+      id: 95,
+      items: [{ args: [{ menuId: 95, subMenu: 'category' }], flags: MenuItemFlags.SubMenu, id: 95, label: 'Category' }],
+      level: 0,
+      uid: 42,
+      x: 100,
+      y: 20,
+    },
+  ])
+
+  await showSubMenuAtEnter(0, 0, 100, 20)
+
+  expect(InternalMenuState.getAll()[1]).toMatchObject({ openSubMenuToLeft: true, x: 0 })
 })
