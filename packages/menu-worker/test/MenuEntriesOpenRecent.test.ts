@@ -151,3 +151,20 @@ test('getMenuEntries should handle exactly 10 items', async () => {
   expect(result[13].id).toBe('clearRecentlyOpened')
   expect(mockRpc.invocations).toEqual([['RecentlyOpened.getRecentlyOpened']])
 })
+
+test('SSH recent entries display a readable path and preserve the reopen uri', async () => {
+  const uri = 'remote-ssh://89.167.102.168/home/simon/my%20project'
+  const mockRpc = createMockRpc({
+    commandMap: {
+      'RecentlyOpened.getRecentlyOpened': async () => [uri],
+    },
+  })
+  RendererWorker.set(mockRpc)
+  const entries = await MenuEntriesOpenRecent.getMenuEntries()
+  expect(entries[0]).toEqual({
+    args: [uri],
+    command: 'Workspace.setPath',
+    flags: MenuItemFlags.None,
+    label: '/home/simon/my project [SSH: 89.167.102.168]',
+  })
+})
