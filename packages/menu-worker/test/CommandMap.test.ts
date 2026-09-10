@@ -10,3 +10,7 @@ test('commandMap registers Menu.selectCurrent', () => {
 test('commandMap registers Menu.show2Below', () => {
   expect(commandMap['Menu.show2Below']).toBe(ContextMenu.show2Below)
 })
+
+test('commandMap registers Menu.handleMessagePort', () => {
+  expect(commandMap['Menu.handleMessagePort']).toBeInstanceOf(Function)
+})
