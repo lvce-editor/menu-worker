@@ -1,17 +1,24 @@
+import * as MenuEntryId from '../MenuEntryId/MenuEntryId.ts'
 import type { MenuEntry } from '../MenuEntry/MenuEntry.ts'
 import * as HelpStrings from '../HelpStrings/HelpStrings.ts'
-import * as MenuEntryId from '../MenuEntryId/MenuEntryId.ts'
+import * as IsAutoUpdateSupported from '../IsAutoUpdateSupported/IsAutoUpdateSupported.ts'
 import * as MenuEntrySeparator from '../MenuEntrySeparator/MenuEntrySeparator.ts'
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 
-export const id = MenuEntryId.Help
-
 export const getMenuEntries = async (platform: number): Promise<readonly MenuEntry[]> => {
-  const autoUpdateSupported = false
-  const entries = []
+  const autoUpdateSupported = IsAutoUpdateSupported.isAutoUpdateSupported(platform)
+  const entries: MenuEntry[] = [
+    {
+      command: 'QuickPick.showCommands',
+      flags: MenuItemFlags.None,
+      id: 'showAllCommands',
+      label: HelpStrings.showAllCommands(),
+    },
+  ]
   if (platform !== PlatformType.Web) {
     entries.push(
+      MenuEntrySeparator.menuEntrySeparator,
       {
         command: 'Developer.toggleDeveloperTools',
         flags: MenuItemFlags.None,
@@ -38,6 +45,12 @@ export const getMenuEntries = async (platform: number): Promise<readonly MenuEnt
     entries.push(MenuEntrySeparator.menuEntrySeparator)
   }
   entries.push({
+    command: 'License.openLicense',
+    flags: MenuItemFlags.RestoreEditorFocus,
+    id: 'viewLicense',
+    label: HelpStrings.viewLicense(),
+  })
+  entries.push({
     command: 'About.showAbout',
     flags: MenuItemFlags.None,
     id: 'about',
@@ -45,3 +58,5 @@ export const getMenuEntries = async (platform: number): Promise<readonly MenuEnt
   })
   return entries
 }
+
+export const id = MenuEntryId.Help

@@ -33,6 +33,14 @@ test('selectAll', () => {
   expect(EditorStrings.selectAll()).toBe('Select All')
 })
 
+test('expandSelection', () => {
+  expect(EditorStrings.expandSelection()).toBe('Expand Selection')
+})
+
+test('shrinkSelection', () => {
+  expect(EditorStrings.shrinkSelection()).toBe('Shrink Selection')
+})
+
 test('copyLineUp', () => {
   expect(EditorStrings.copyLineUp()).toBe('Copy Line Up')
 })
@@ -47,4 +55,32 @@ test('moveLineUp', () => {
 
 test('moveLineDown', () => {
   expect(EditorStrings.moveLineDown()).toBe('Move Line Down')
+})
+
+test('duplicateSelection', () => {
+  expect(EditorStrings.duplicateSelection()).toBe('Duplicate Selection')
+})
+
+test('addCursorAbove', () => {
+  expect(EditorStrings.addCursorAbove()).toBe('Add Cursor Above')
+})
+
+test('addCursorBelow', () => {
+  expect(EditorStrings.addCursorBelow()).toBe('Add Cursor Below')
+})
+
+test('addCursorsToLineEnds', () => {
+  expect(EditorStrings.addCursorsToLineEnds()).toBe('Add Cursors to Line ends')
+})
+
+test('addNextOccurrence', () => {
+  expect(EditorStrings.addNextOccurrence()).toBe('Add Next Occurrence')
+})
+
+test('addPreviousOccurrence', () => {
+  expect(EditorStrings.addPreviousOccurrence()).toBe('Add Previous Occurrence')
+})
+
+test('selectAllOccurrences', () => {
+  expect(EditorStrings.selectAllOccurrences()).toBe('Select All Occurrences')
 })

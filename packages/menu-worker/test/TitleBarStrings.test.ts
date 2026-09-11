@@ -17,6 +17,10 @@ test('view', () => {
   expect(TitleBarStrings.view()).toBe('View')
 })
 
+test('fullScreen', () => {
+  expect(TitleBarStrings.fullScreen()).toBe('Full Screen')
+})
+
 test('go', () => {
   expect(TitleBarStrings.go()).toBe('Go')
 })
@@ -47,4 +51,23 @@ test('maximize', () => {
 
 test('close', () => {
   expect(TitleBarStrings.close()).toBe('Close')
+})
+
+test('titleBar', () => {
+  expect(TitleBarStrings.titleBar()).toBe('Title Bar')
+})
+
+test('menuBar', () => {
+  expect(TitleBarStrings.menuBar()).toBe('Menu Bar')
+})
+
+test('commandCenter', () => {
+  expect(TitleBarStrings.commandCenter()).toBe('Command Center')
+})
+
+test('layoutControls', () => {
+  expect(TitleBarStrings.layoutControls()).toBe('Layout Controls')
+})
+test('about', () => {
+  expect(TitleBarStrings.about()).toBe('About')
 })
