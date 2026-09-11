@@ -1,6 +1,5 @@
 import { MenuEntryId } from '@lvce-editor/constants'
 import type { MenuEntry } from '../MenuEntry/MenuEntry.ts'
-import { MenuIdAppearance, MenuIdEditorLayout, MenuIdSwitchEditor, MenuIdSwitchGroup } from '../TitleBarMenuIds/TitleBarMenuIds.ts'
 import * as HasOpenTextEditor from '../HasOpenTextEditor/HasOpenTextEditor.ts'
 import * as MenuEntriesAppearance from '../MenuEntriesAppearance/MenuEntriesAppearance.ts'
 import * as MenuEntriesEdit from '../MenuEntriesEdit/MenuEntriesEdit.ts'
@@ -13,6 +12,7 @@ import * as MenuEntriesRun from '../MenuEntriesRun/MenuEntriesRun.ts'
 import * as MenuEntriesSelection from '../MenuEntriesSelection/MenuEntriesSelection.ts'
 import * as MenuEntriesTerminal from '../MenuEntriesTerminal/MenuEntriesTerminal.ts'
 import * as MenuEntriesView from '../MenuEntriesView/MenuEntriesView.ts'
+import { MenuIdAppearance, MenuIdEditorLayout, MenuIdSwitchEditor, MenuIdSwitchGroup } from '../TitleBarMenuIds/TitleBarMenuIds.ts'
 
 export const getTitleBarMenuEntries = async (menuId: string | number, platform: number): Promise<readonly MenuEntry[]> => {
   switch (menuId) {

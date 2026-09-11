@@ -1,8 +1,8 @@
 import { expect, test } from '@jest/globals'
-import { MenuIdSwitchEditor, MenuIdSwitchGroup } from '../src/parts/GetMenuIds/GetMenuIds.ts'
 import { getMenuEntries } from '../src/parts/MenuEntriesGo/MenuEntriesGo.ts'
 import { menuEntrySeparator } from '../src/parts/MenuEntrySeparator/MenuEntrySeparator.ts'
 import * as MenuItemFlags from '../src/parts/MenuItemFlags/MenuItemFlags.ts'
+import { MenuIdSwitchEditor, MenuIdSwitchGroup } from '../src/parts/TitleBarMenuIds/TitleBarMenuIds.ts'
 
 const notImplementedMessage = {
   message: 'Not implemented',

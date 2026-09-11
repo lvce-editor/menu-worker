@@ -1,4 +1,3 @@
-import { getTitleBarMenuEntries } from '../GetTitleBarMenuEntries/GetTitleBarMenuEntries.ts'
 import { closeSubMenu } from '../CloseSubMenu/CloseSubMenu.ts'
 import * as ContextMenu from '../ContextMenu/ContextMenu.ts'
 import * as Diff2 from '../Diff2/Diff2.ts'
@@ -12,6 +11,7 @@ import * as GetKeyBindings from '../GetKeyBindings/GetKeyBindings.ts'
 import { getMenuHideCommands } from '../GetMenuHideCommands/GetMenuHideCommands.ts'
 import * as GetMenuIds from '../GetMenuIds/GetMenuIds.ts'
 import { getMenuShowCommands } from '../GetMenuShowCommands/GetMenuShowCommands.ts'
+import { getTitleBarMenuEntries } from '../GetTitleBarMenuEntries/GetTitleBarMenuEntries.ts'
 import * as HandleContextMenu from '../HandleContextMenu/HandleContextMenu.ts'
 import { handleMessagePort } from '../HandleMessagePort/HandleMessagePort.ts'
 import { handleMouseEnter } from '../HandleMouseEnter/HandleMouseEnter.ts'
@@ -42,9 +42,9 @@ export const commandMap = {
   'Menu.getKeyBindings': GetKeyBindings.getKeyBindings,
   'Menu.getMenuEntries': GetMenuIds.getMenuEntries,
   'Menu.getMenuIds': GetMenuIds.getMenuIds,
-  'Menu.getTitleBarMenuEntries': getTitleBarMenuEntries,
   'Menu.getMenus': MenuEntries.getMenus,
   'Menu.getShowCommands': getMenuShowCommands,
+  'Menu.getTitleBarMenuEntries': getTitleBarMenuEntries,
   'Menu.handleContextMenu': HandleContextMenu.handleContextMenu,
   'Menu.handleMessagePort': handleMessagePort,
   'Menu.handleMouseEnter': handleMouseEnter,

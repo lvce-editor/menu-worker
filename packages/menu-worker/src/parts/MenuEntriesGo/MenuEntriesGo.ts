@@ -1,8 +1,8 @@
-import * as MenuEntryId from '../MenuEntryId/MenuEntryId.ts'
 import type { MenuEntry } from '../MenuEntry/MenuEntry.ts'
-import { MenuIdSwitchEditor, MenuIdSwitchGroup } from '../TitleBarMenuIds/TitleBarMenuIds.ts'
+import * as MenuEntryId from '../MenuEntryId/MenuEntryId.ts'
 import { menuEntrySeparator } from '../MenuEntrySeparator/MenuEntrySeparator.ts'
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
+import { MenuIdSwitchEditor, MenuIdSwitchGroup } from '../TitleBarMenuIds/TitleBarMenuIds.ts'
 
 const notImplementedMessage = {
   message: 'Not implemented',
