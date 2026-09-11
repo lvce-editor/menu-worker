@@ -15,12 +15,10 @@ export const getTitleBarMenuEntries = async (menuId: string | number, platform: 
   switch (menuId) {
     case MenuEntryId.Edit:
       return MenuEntriesEdit.getMenuEntries()
-    case MenuEntryId.File:
-      return MenuEntriesFile.getMenuEntries(
-        platform,
-        undefined,
-        await (await import('../HasOpenTextEditor/HasOpenTextEditor.ts')).hasOpenTextEditor(),
-      )
+    case MenuEntryId.File: {
+      const { hasOpenTextEditor } = await import('../HasOpenTextEditor/HasOpenTextEditor.ts')
+      return MenuEntriesFile.getMenuEntries(platform, undefined, await hasOpenTextEditor())
+    }
     case MenuEntryId.Go:
       return MenuEntriesGo.getMenuEntries()
     case MenuEntryId.Help:
@@ -29,16 +27,22 @@ export const getTitleBarMenuEntries = async (menuId: string | number, platform: 
       return MenuEntriesOpenRecent.getMenuEntries()
     case MenuEntryId.Run:
       return MenuEntriesRun.getMenuEntries()
-    case MenuEntryId.Selection:
-      return MenuEntriesSelection.getMenuEntries(await (await import('../HasOpenTextEditor/HasOpenTextEditor.ts')).hasOpenTextEditor())
+    case MenuEntryId.Selection: {
+      const { hasOpenTextEditor } = await import('../HasOpenTextEditor/HasOpenTextEditor.ts')
+      return MenuEntriesSelection.getMenuEntries(await hasOpenTextEditor())
+    }
     case MenuEntryId.Terminal:
       return MenuEntriesTerminal.getMenuEntries()
     case MenuEntryId.View:
       return MenuEntriesView.getMenuEntries()
-    case MenuIdAppearance:
-      return (await import('../MenuEntriesAppearance/MenuEntriesAppearance.ts')).getMenuEntries()
-    case MenuIdEditorLayout:
-      return (await import('../MenuEntriesEditorLayout/MenuEntriesEditorLayout.ts')).getMenuEntries()
+    case MenuIdAppearance: {
+      const { getMenuEntries } = await import('../MenuEntriesAppearance/MenuEntriesAppearance.ts')
+      return getMenuEntries()
+    }
+    case MenuIdEditorLayout: {
+      const { getMenuEntries } = await import('../MenuEntriesEditorLayout/MenuEntriesEditorLayout.ts')
+      return getMenuEntries()
+    }
     case MenuIdSwitchEditor:
       return MenuEntriesGo.getMenuEntriesSwitchEditor()
     case MenuIdSwitchGroup:
