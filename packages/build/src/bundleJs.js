@@ -15,7 +15,8 @@ const options = {
     propertyReadSideEffects: false,
   },
   output: {
-    file: join(root, '.tmp/dist/dist/menuWorkerMain.js'),
+    dir: join(root, '.tmp/dist/dist'),
+    entryFileNames: 'menuWorkerMain.js',
     format: 'es',
     freeze: false,
     generatedCode: {
