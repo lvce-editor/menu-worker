@@ -1,33 +1,37 @@
 import { expect, test } from '@jest/globals'
-import { createMockRpc } from '@lvce-editor/rpc'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as GetRecentlyOpened from '../src/parts/GetRecentlyOpened/GetRecentlyOpened.ts'
 
-test('getRecentlyOpened calls correct RPC method and returns result', async () => {
-  const mockData = [{ path: '/path/to/file1.ts' }, { path: '/path/to/file2.ts' }]
-  const mockRpc = createMockRpc({
-    commandMap: {
-      'RecentlyOpened.getRecentlyOpened': async () => {
-        return mockData
-      },
+test('getRecentlyOpened', async () => {
+  const mockData = [
+    'file:///home/user/project1',
+    '/home/user/project2',
+    'C:\\Users\\user\\project2',
+    'https://example.com',
+    'https://example.com/',
+    { label: 'project3', path: 'file:///home/user/project3' },
+    'not a uri',
+    'vscode-remote://ssh-remote+host/home/user/project4',
+    'file:///home/user/project1',
+  ]
+
+  using mockRpc = RendererWorker.registerMockRpc({
+    'RecentlyOpened.getRecentlyOpened'() {
+      return mockData
     },
   })
-  RendererWorker.set(mockRpc)
 
   const result = await GetRecentlyOpened.getRecentlyOpened()
-  expect(result).toEqual(mockData)
+  expect(result).toEqual(['file:///home/user/project1', 'https://example.com/', 'vscode-remote://ssh-remote+host/home/user/project4'])
   expect(mockRpc.invocations).toEqual([['RecentlyOpened.getRecentlyOpened']])
 })
 
-test('getRecentlyOpened handles empty result', async () => {
-  const mockRpc = createMockRpc({
-    commandMap: {
-      'RecentlyOpened.getRecentlyOpened': async () => {
-        return []
-      },
+test('getRecentlyOpened - returns empty array for non-array result', async () => {
+  using mockRpc = RendererWorker.registerMockRpc({
+    'RecentlyOpened.getRecentlyOpened'() {
+      return undefined
     },
   })
-  RendererWorker.set(mockRpc)
 
   const result = await GetRecentlyOpened.getRecentlyOpened()
   expect(result).toEqual([])

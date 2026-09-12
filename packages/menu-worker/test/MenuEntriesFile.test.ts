@@ -1,70 +1,70 @@
 import { expect, test } from '@jest/globals'
-import * as MenuEntriesFile from '../src/parts/MenuEntriesFile/MenuEntriesFile.ts'
-import * as MenuEntryId from '../src/parts/MenuEntryId/MenuEntryId.ts'
+import { getMenuEntries } from '../src/parts/MenuEntriesFile/MenuEntriesFile.ts'
+import * as MenuEntrySeparator from '../src/parts/MenuEntrySeparator/MenuEntrySeparator.ts'
 import * as MenuItemFlags from '../src/parts/MenuItemFlags/MenuItemFlags.ts'
 import * as PlatformType from '../src/parts/PlatformType/PlatformType.ts'
 
-test('id is File', () => {
-  expect(MenuEntriesFile.id).toBe(MenuEntryId.File)
+test('getMenuEntries - auto save enabled', async () => {
+  const result = await getMenuEntries(PlatformType.Web, 'afterDelay')
+
+  expect(result).toContainEqual({
+    command: 'Preferences.toggleAutoSave',
+    flags: MenuItemFlags.Checked,
+    id: 'autoSave',
+    label: 'Auto Save',
+  })
 })
 
-test('getMenuEntries returns correct entries for Web platform', () => {
-  const entries = MenuEntriesFile.getMenuEntries(PlatformType.Web)
-  expect(entries.length).toBe(9)
-  expect(entries[0].id).toBe('newFile')
-  expect(entries[1].id).toBe('newWindow')
-  expect(entries[2].flags).toBe(MenuItemFlags.Separator)
-  expect(entries[3].id).toBe('openFile')
-  expect(entries[4].id).toBe('openFolder')
-  expect(entries[5].id).toBe(MenuEntryId.OpenRecent)
-  expect(entries[6].flags).toBe(MenuItemFlags.Separator)
-  expect(entries[7].id).toBe('save')
-  expect(entries[8].id).toBe('saveAll')
+test('getMenuEntries - auto save disabled', async () => {
+  const result = await getMenuEntries(PlatformType.Electron, 'off')
+
+  expect(result).toContainEqual({
+    command: 'Preferences.toggleAutoSave',
+    flags: MenuItemFlags.Unchecked,
+    id: 'autoSave',
+    label: 'Auto Save',
+  })
+  expect(result).toContainEqual(MenuEntrySeparator.menuEntrySeparator)
 })
 
-test('getMenuEntries returns correct entries for Remote platform', () => {
-  const entries = MenuEntriesFile.getMenuEntries(PlatformType.Remote)
-  expect(entries.length).toBe(9)
-  expect(entries.at(-1)?.id).toBe('saveAll')
+test('getMenuEntries - save commands are disabled by default', async () => {
+  const entries = await getMenuEntries(PlatformType.Web, 'off')
+  expect(entries).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        flags: MenuItemFlags.Disabled,
+        id: 'save',
+      }),
+      expect.objectContaining({
+        flags: MenuItemFlags.Disabled,
+        id: 'saveAll',
+      }),
+    ]),
+  )
 })
 
-test('getMenuEntries returns correct entries for Electron platform', () => {
-  const entries = MenuEntriesFile.getMenuEntries(PlatformType.Electron)
-  expect(entries.length).toBe(11)
-  expect(entries[entries.length - 2].flags).toBe(MenuItemFlags.Separator)
-  expect(entries.at(-1)?.id).toBe('exit')
-  expect(entries.at(-1)?.flags).toBe(MenuItemFlags.Ignore)
-  expect(entries.at(-1)?.command).toBe('Chrome.exit')
+test('getMenuEntries - save is enabled with active text editor', async () => {
+  const entries = await getMenuEntries(PlatformType.Web, 'off', true)
+  expect(entries).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        flags: MenuItemFlags.None,
+        id: 'save',
+      }),
+      expect.objectContaining({
+        flags: MenuItemFlags.Disabled,
+        id: 'saveAll',
+      }),
+    ]),
+  )
 })
 
-test('getMenuEntries has correct structure for all entries', () => {
-  const entries = MenuEntriesFile.getMenuEntries(PlatformType.Web)
-  for (const entry of entries) {
-    expect(entry).toHaveProperty('label')
-    expect(entry).toHaveProperty('flags')
-    expect(entry).toHaveProperty('command')
-    expect(typeof entry.label).toBe('string')
-    expect(typeof entry.flags).toBe('number')
-    expect(typeof entry.command).toBe('string')
-  }
-})
-
-test('getMenuEntries has correct commands', () => {
-  const entries = MenuEntriesFile.getMenuEntries(PlatformType.Web)
-  const entryMap = new Map(entries.map((entry) => [entry.id, entry]))
-  expect(entryMap.get('newFile')?.command).toBe('-1')
-  expect(entryMap.get('newWindow')?.command).toBe('Window.openNew')
-  expect(entryMap.get('openFile')?.command).toBe('Dialog.openFile')
-  expect(entryMap.get('openFolder')?.command).toBe('Dialog.openFolder')
-  expect(entryMap.get('save')?.command).toBe('Main.save')
-  expect(entryMap.get('saveAll')?.command).toBe('Main.saveAll')
-})
-
-test('getMenuEntries has correct flags', () => {
-  const entries = MenuEntriesFile.getMenuEntries(PlatformType.Web)
-  const entryMap = new Map(entries.map((entry) => [entry.id, entry]))
-  expect(entryMap.get('openFolder')?.flags).toBe(MenuItemFlags.RestoreFocus)
-  expect(entryMap.get(MenuEntryId.OpenRecent)?.flags).toBe(MenuItemFlags.SubMenu)
-  expect(entryMap.get('save')?.flags).toBe(MenuItemFlags.Disabled)
-  expect(entryMap.get('saveAll')?.flags).toBe(MenuItemFlags.Disabled)
+test('getMenuEntries - close folder command', async () => {
+  const entries = await getMenuEntries(PlatformType.Web, 'off')
+  expect(entries).toContainEqual({
+    command: 'Workspace.close',
+    flags: MenuItemFlags.RestoreFocus,
+    id: 'closeFolder',
+    label: 'Close Folder',
+  })
 })

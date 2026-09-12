@@ -1,36 +1,35 @@
-import type { MenuEntry } from '../MenuEntry/MenuEntry.ts'
-import * as I18NString from '../I18NString/I18NString.ts'
-import * as MenuEntryId from '../MenuEntryId/MenuEntryId.ts'
-import * as MenuEntrySeparator from '../MenuEntrySeparator/MenuEntrySeparator.ts'
-import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
-import * as UiStrings from '../UiStrings/UiStrings.ts'
+import { expect, test } from '@jest/globals'
+import { getMenuEntries } from '../src/parts/MenuEntriesView/MenuEntriesView.ts'
+import * as MenuEntrySeparator from '../src/parts/MenuEntrySeparator/MenuEntrySeparator.ts'
+import * as MenuItemFlags from '../src/parts/MenuItemFlags/MenuItemFlags.ts'
 
-export const getMenuEntries = (): readonly MenuEntry[] => {
-  return [
+test('getMenuEntries', () => {
+  const result = getMenuEntries()
+  expect(result).toEqual([
     {
       command: 'QuickPick.showCommands',
       flags: MenuItemFlags.None,
       id: 'commandPalette',
-      label: I18NString.i18nString(UiStrings.CommandPalette),
+      label: 'Command Palette',
     },
     {
       command: 'View.openView',
       flags: MenuItemFlags.None,
       id: 'openView',
-      label: I18NString.i18nString(UiStrings.OpenView),
+      label: 'Open View',
     },
     MenuEntrySeparator.menuEntrySeparator,
     {
       command: '',
       flags: MenuItemFlags.SubMenu,
       id: 'appearance',
-      label: I18NString.i18nString(UiStrings.Appearance),
+      label: 'Appearance',
     },
     {
       command: '',
       flags: MenuItemFlags.SubMenu,
       id: 'editorLayout',
-      label: I18NString.i18nString(UiStrings.EditorLayout),
+      label: 'Editor Layout',
     },
     MenuEntrySeparator.menuEntrySeparator,
     {
@@ -38,35 +37,35 @@ export const getMenuEntries = (): readonly MenuEntry[] => {
       command: 'Layout.openSideBarViewlet',
       flags: MenuItemFlags.None,
       id: 'explorer',
-      label: I18NString.i18nString(UiStrings.Explorer),
+      label: 'Explorer',
     },
     {
       args: ['Search'],
       command: 'Layout.openSideBarViewlet',
       flags: MenuItemFlags.None,
       id: 'search',
-      label: I18NString.i18nString(UiStrings.Search),
+      label: 'Search',
     },
     {
       args: ['Source Control', true],
       command: 'Layout.openSideBarViewlet',
       flags: MenuItemFlags.None,
       id: 'sourceControl',
-      label: I18NString.i18nString(UiStrings.SourceControl),
+      label: 'Source Control',
     },
     {
       args: ['Run And Debug', true],
       command: 'Layout.openSideBarViewlet',
       flags: MenuItemFlags.None,
       id: 'run',
-      label: I18NString.i18nString(UiStrings.Run),
+      label: 'Run',
     },
     {
       args: ['Extensions', true],
       command: 'Layout.openSideBarViewlet',
       flags: MenuItemFlags.None,
       id: 'extensions',
-      label: I18NString.i18nString(UiStrings.Extensions),
+      label: 'Extensions',
     },
     MenuEntrySeparator.menuEntrySeparator,
     {
@@ -74,7 +73,7 @@ export const getMenuEntries = (): readonly MenuEntry[] => {
       command: 'Layout.openChat',
       flags: MenuItemFlags.None,
       id: 'chat',
-      label: I18NString.i18nString(UiStrings.Chat),
+      label: 'Chat',
     },
     MenuEntrySeparator.menuEntrySeparator,
     {
@@ -82,29 +81,27 @@ export const getMenuEntries = (): readonly MenuEntry[] => {
       command: 'Layout.showPanel',
       flags: MenuItemFlags.None,
       id: 'problems',
-      label: I18NString.i18nString(UiStrings.Problems),
+      label: 'Problems',
     },
     {
       args: ['Output'],
       command: 'Layout.showPanel',
       flags: MenuItemFlags.None,
       id: 'output',
-      label: I18NString.i18nString(UiStrings.Output),
+      label: 'Output',
     },
     {
       args: ['Terminals'],
       command: 'Layout.showPanel',
       flags: MenuItemFlags.None,
       id: 'terminal',
-      label: I18NString.i18nString(UiStrings.Terminal),
+      label: 'Terminal',
     },
     {
       command: 'Editor.toggleWordWrap',
       flags: MenuItemFlags.None,
       id: 'wordWrap',
-      label: I18NString.i18nString(UiStrings.WordWrap),
+      label: 'Word Wrap',
     },
-  ]
-}
-
-export const id = MenuEntryId.View
+  ])
+})

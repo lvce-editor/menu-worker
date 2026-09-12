@@ -1,3 +1,4 @@
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { MenuEntry } from '../MenuEntry/MenuEntry.ts'
 import * as FileStrings from '../FileStrings/FileStrings.ts'
 import * as MenuEntryId from '../MenuEntryId/MenuEntryId.ts'
@@ -5,18 +6,37 @@ import * as MenuEntrySeparator from '../MenuEntrySeparator/MenuEntrySeparator.ts
 import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 
-export const id = MenuEntryId.File
+const getAutoSave = async (): Promise<string> => {
+  try {
+    return await RendererWorker.invoke('Preferences.get', 'files.autoSave')
+  } catch {
+    return 'off'
+  }
+}
 
-export const getMenuEntries = (platform: number): readonly MenuEntry[] => {
+const isAutoSaveEnabled = (autoSave: string): boolean => {
+  return autoSave !== 'off'
+}
+
+const getSaveFlags = (hasActiveTextEditor: boolean): number => {
+  if (hasActiveTextEditor) {
+    return MenuItemFlags.None
+  }
+  return MenuItemFlags.Disabled
+}
+
+export const getMenuEntries = async (platform: number, autoSave?: string, hasActiveTextEditor: boolean = false): Promise<readonly MenuEntry[]> => {
+  const autoSaveValue = autoSave ?? (await getAutoSave())
+  const saveFlags = getSaveFlags(hasActiveTextEditor)
   const entries: MenuEntry[] = [
     {
-      command: '-1',
+      command: 'Main.newFile',
       flags: MenuItemFlags.None,
       id: 'newFile',
       label: FileStrings.newFile(),
     },
     {
-      command: /* Window.openNew */ 'Window.openNew',
+      command: 'Window.openNew',
       flags: MenuItemFlags.None,
       id: 'newWindow',
       label: FileStrings.newWindow(),
@@ -43,7 +63,7 @@ export const getMenuEntries = (platform: number): readonly MenuEntry[] => {
     MenuEntrySeparator.menuEntrySeparator,
     {
       command: 'Main.save',
-      flags: MenuItemFlags.Disabled,
+      flags: saveFlags,
       id: 'save',
       label: FileStrings.save(),
     },
@@ -52,6 +72,20 @@ export const getMenuEntries = (platform: number): readonly MenuEntry[] => {
       flags: MenuItemFlags.Disabled,
       id: 'saveAll',
       label: FileStrings.saveAll(),
+    },
+    MenuEntrySeparator.menuEntrySeparator,
+    {
+      command: 'Preferences.toggleAutoSave',
+      flags: isAutoSaveEnabled(autoSaveValue) ? MenuItemFlags.Checked : MenuItemFlags.Unchecked,
+      id: 'autoSave',
+      label: FileStrings.autoSave(),
+    },
+    MenuEntrySeparator.menuEntrySeparator,
+    {
+      command: 'Workspace.close',
+      flags: MenuItemFlags.RestoreFocus,
+      id: 'closeFolder',
+      label: FileStrings.closeFolder(),
     },
   ]
   if (platform === PlatformType.Electron) {
@@ -64,3 +98,5 @@ export const getMenuEntries = (platform: number): readonly MenuEntry[] => {
   }
   return entries
 }
+
+export const id = MenuEntryId.File
