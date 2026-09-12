@@ -5,8 +5,11 @@ export const getTitle = (homeDir: string, uri: string): string => {
     return ''
   }
   if (uri.startsWith('remote-ssh://')) {
+    if (!URL.canParse(uri)) {
+      return uri
+    }
+    const parsed = new URL(uri)
     try {
-      const parsed = new URL(uri)
       if (parsed.host) {
         return `${decodeURIComponent(parsed.pathname) || '/'} [SSH: ${parsed.host}]`
       }
