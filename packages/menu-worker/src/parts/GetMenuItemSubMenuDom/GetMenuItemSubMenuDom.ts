@@ -12,9 +12,11 @@ const arrowRight: VirtualDomNode = {
   type: VirtualDomElements.Div,
 }
 
+const menuItemSubMenuClassName = MergeClassNames.mergeClassNames(ClassNames.MenuItem, ClassNames.MenuItemSubMenu)
+
 export const getMenuItemSubMenuDom = (menuItem: VisibleMenuItem): readonly VirtualDomNode[] => {
   const { isExpanded, isFocused, label, level } = menuItem
-  let className = MergeClassNames.mergeClassNames(ClassNames.MenuItem, ClassNames.MenuItemSubMenu)
+  let className = menuItemSubMenuClassName
   if (isFocused) {
     className = MergeClassNames.mergeClassNames(className, ClassNames.MenuItemFocused)
   }
