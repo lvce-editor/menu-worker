@@ -24,13 +24,16 @@ export * from '../GetMenuHeight/GetMenuHeight.ts'
 
 export const show = async (x: number, y: number, id: any, mouseBlocking = false, ...args: readonly any[]): Promise<void> => {
   const items = await GetMenuEntriesWithKeyBindings.getMenuEntriesWithKeyBindings(id, ...args)
-  const bounds = await getMenuBounds(x, y, items)
+  const viewport = await RendererProcess.invoke('Menu.getViewport')
+  const bounds = await getMenuBounds(x, y, items, false, viewport)
   const menu = addMenuInternal({
     args,
     focusedIndex: -1,
     id,
     items,
     level: getCount(),
+    viewport,
+    width: bounds.width,
     x: bounds.x,
     y: bounds.y,
   })
@@ -60,7 +63,8 @@ const show2Internal = async (
   ...args: readonly any[]
 ): Promise<any> => {
   const items = await GetMenuEntriesWithKeyBindings.getMenuEntriesWithKeyBindings2(uid, menuId, ...args)
-  const bounds = await getMenuBounds(x, y, items, openBelow)
+  const viewport = await RendererProcess.invoke('Menu.getViewport', uid)
+  const bounds = await getMenuBounds(x + viewport.x, y + viewport.y, items, openBelow, viewport)
   const menu = addMenuInternal({
     args,
     focusedIndex: -1,
@@ -68,6 +72,8 @@ const show2Internal = async (
     items,
     level: getCount(),
     uid,
+    viewport,
+    width: bounds.width,
     x: bounds.x,
     y: bounds.y,
   })

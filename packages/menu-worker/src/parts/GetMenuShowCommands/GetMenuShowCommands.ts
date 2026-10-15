@@ -1,3 +1,4 @@
+import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 // TODO lazyload menuEntries and use Command.execute (maybe)
 import { getMenuBounds } from '../GetMenuBounds/GetMenuBounds.ts'
 import * as GetMenuVirtualDom from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
@@ -17,12 +18,15 @@ import { addMenuInternal, getAll, getCount } from '../InternalMenuState/Internal
 // TODO more tests
 
 export const getMenuShowCommands = async (items: any, menuId: any, x: number, y: number, mouseBlocking = false): Promise<any> => {
-  const bounds = await getMenuBounds(x, y, items)
+  const viewport = await RendererProcess.invoke('Menu.getViewport')
+  const bounds = await getMenuBounds(x, y, items, false, viewport)
   const menu = addMenuInternal({
     focusedIndex: -1,
     id: menuId,
     items,
     level: getCount(),
+    viewport,
+    width: bounds.width,
     x: bounds.x,
     y: bounds.y,
   })

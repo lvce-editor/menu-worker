@@ -1,3 +1,4 @@
+import { getMenuBounds } from '../GetMenuBounds/GetMenuBounds.ts'
 import { getMenuHeight } from '../GetMenuHeight/GetMenuHeight.ts'
 import { getMenuMeasuredWidth } from '../GetMenuMeasuredWidth/GetMenuMeasuredWidth.ts'
 import { getMenuVirtualDom } from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
@@ -30,6 +31,13 @@ export const showSubMenuAtEnter = async (level: number, index: number, enterX: n
   const subMenuItems = await getSubMenuItems(parentMenu, item)
   const openSubMenuToLeft = getOpenSubMenuToLeft(parentMenu)
   const width = await getMenuMeasuredWidth(subMenuItems)
+  const parentWidth = parentMenu.width ?? MENU_WIDTH
+  const itemOffset = getMenuHeight(parentMenu.items.slice(0, index)) - 8
+  const requestedX = openSubMenuToLeft ? parentMenu.x - width : parentMenu.x + parentWidth
+  const bounds = await getMenuBounds(requestedX, parentMenu.y + itemOffset, subMenuItems, false, parentMenu.viewport)
+  if (!openSubMenuToLeft && bounds.x !== requestedX) {
+    bounds.x = Math.max(parentMenu.viewport?.x ?? 0, parentMenu.x - width)
+  }
   const subMenu = addMenuInternal({
     args: item.args || parentMenu.args || [],
     enterX,
@@ -41,8 +49,10 @@ export const showSubMenuAtEnter = async (level: number, index: number, enterX: n
     openSubMenuToLeft,
     parentIndex: index,
     uid: parentMenu.uid,
-    x: openSubMenuToLeft ? Math.max(0, parentMenu.x - width) : parentMenu.x + MENU_WIDTH,
-    y: parentMenu.y + index * 25,
+    viewport: parentMenu.viewport,
+    width,
+    x: bounds.x,
+    y: bounds.y,
   })
   const height = getMenuHeight(subMenuItems)
   const visible = getVisible(subMenu.items, -1, false, subMenu.level)

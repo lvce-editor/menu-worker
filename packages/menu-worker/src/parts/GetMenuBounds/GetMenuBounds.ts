@@ -1,6 +1,6 @@
 // TODO lazyload menuEntries and use Command.execute (maybe)
 import * as GetMenuMeasuredWidth from '../GetMenuMeasuredWidth/GetMenuMeasuredWidth.ts'
-import * as MenuItemFlags from '../MenuItemFlags/MenuItemFlags.ts'
+import { getMenuHeight } from '../GetMenuHeight/GetMenuHeight.ts'
 
 const MENU_TARGET_GAP = 5
 
@@ -16,42 +16,38 @@ const MENU_TARGET_GAP = 5
 
 // TODO more tests
 
-const CONTEXT_MENU_ITEM_HEIGHT = 26
-const CONTEXT_MENU_SEPARATOR_HEIGHT = 11
-const CONTEXT_MENU_PADDING = 8
-
-const getMenuHeight = (items: readonly any[]): number => {
-  let height = CONTEXT_MENU_PADDING
-  for (const item of items) {
-    switch (item.flags) {
-      case MenuItemFlags.Separator:
-        height += CONTEXT_MENU_SEPARATOR_HEIGHT
-        break
-      default:
-        height += CONTEXT_MENU_ITEM_HEIGHT
-        break
-    }
-  }
-  return height
+export interface MenuViewport {
+  readonly x: number
+  readonly y: number
+  readonly width: number
+  readonly height: number
 }
 
-export const getMenuBounds = async (x: number, y: number, items: readonly any[], openBelow = false): Promise<any> => {
+export const getMenuBounds = async (
+  x: number,
+  y: number,
+  items: readonly any[],
+  openBelow = false,
+  viewport: MenuViewport = { x: 0, y: 0, width: Number.POSITIVE_INFINITY, height: Number.POSITIVE_INFINITY },
+): Promise<any> => {
   const menuWidth = await GetMenuMeasuredWidth.getMenuMeasuredWidth(items)
   const menuHeight = getMenuHeight(items)
-  const layoutState = { points: [0, 0] }
-  const windowWidth = layoutState.points[0]
-  const windowHeight = layoutState.points[1]
+  const right = viewport.x + viewport.width
+  const bottom = viewport.y + viewport.height
   // TODO maybe only send labels and keybindings to ui (id not needed on ui)
   // TODO what about separators?
 
-  if (x + menuWidth > windowWidth) {
+  if (x + menuWidth > right) {
     x -= menuWidth + MENU_TARGET_GAP
-    x = Math.max(x, 0)
+    x = Math.max(x, viewport.x)
   }
-  if (!openBelow && y + menuHeight > windowHeight) {
+  if (!openBelow && y + menuHeight > bottom) {
     y -= menuHeight
-    y = Math.max(y, 0)
+    y = Math.max(y, viewport.y)
   }
+
+  x = Math.max(viewport.x, Math.min(x, right - menuWidth))
+  if (!openBelow) y = Math.max(viewport.y, Math.min(y, bottom - menuHeight))
 
   return {
     height: menuHeight,
