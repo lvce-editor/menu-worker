@@ -1,6 +1,6 @@
+import { getMenuHeight } from '../GetMenuHeight/GetMenuHeight.ts'
 // TODO lazyload menuEntries and use Command.execute (maybe)
 import * as GetMenuMeasuredWidth from '../GetMenuMeasuredWidth/GetMenuMeasuredWidth.ts'
-import { getMenuHeight } from '../GetMenuHeight/GetMenuHeight.ts'
 
 const MENU_TARGET_GAP = 5
 
@@ -17,18 +17,20 @@ const MENU_TARGET_GAP = 5
 // TODO more tests
 
 export interface MenuViewport {
+  readonly height: number
+  readonly width: number
   readonly x: number
   readonly y: number
-  readonly width: number
-  readonly height: number
 }
+
+const unboundedViewport: MenuViewport = { height: Infinity, width: Infinity, x: 0, y: 0 }
 
 export const getMenuBounds = async (
   x: number,
   y: number,
   items: readonly any[],
   openBelow = false,
-  viewport: MenuViewport = { x: 0, y: 0, width: Number.POSITIVE_INFINITY, height: Number.POSITIVE_INFINITY },
+  viewport: MenuViewport = unboundedViewport,
 ): Promise<any> => {
   const menuWidth = await GetMenuMeasuredWidth.getMenuMeasuredWidth(items)
   const menuHeight = getMenuHeight(items)

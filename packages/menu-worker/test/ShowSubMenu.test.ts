@@ -209,7 +209,7 @@ test.each([-1, 0])('selecting a submenu opens it when the focused index is %i', 
 })
 
 test('opens an overflowing submenu to the left inside its owning viewport', async () => {
-  getMenuEntries2.mockResolvedValue([{ label: 'Sign Out', flags: MenuItemFlags.None }])
+  getMenuEntries2.mockResolvedValue([{ flags: MenuItemFlags.None, label: 'Sign Out' }])
   InternalMenuState.set([
     {
       args: [],
@@ -218,12 +218,12 @@ test('opens an overflowing submenu to the left inside its owning viewport', asyn
       items: [{ flags: MenuItemFlags.SubMenu, id: 2, label: 'Account' }],
       level: 0,
       uid: 42,
+      viewport: { height: 400, width: 600, x: 600, y: 80 },
+      width: 200,
       x: 1000,
       y: 450,
-      width: 200,
-      viewport: { x: 600, y: 80, width: 600, height: 400 },
     },
   ])
   await showSubMenuAtEnter(0, 0, 1000, 450)
-  expect(InternalMenuState.getAll()[1]).toMatchObject({ x: 780, y: 416, width: 220, uid: 42 })
+  expect(InternalMenuState.getAll()[1]).toMatchObject({ uid: 42, width: 220, x: 780, y: 416 })
 })

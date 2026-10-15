@@ -1,9 +1,9 @@
-import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 // TODO lazyload menuEntries and use Command.execute (maybe)
 import { getMenuBounds } from '../GetMenuBounds/GetMenuBounds.ts'
 import * as GetMenuVirtualDom from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
 import * as GetVisibleMenuItems from '../GetVisibleMenuItems/GetVisibleMenuItems.ts'
 import { addMenuInternal, getAll, getCount } from '../InternalMenuState/InternalMenuState.ts'
+import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
 // TODO difference between focusing with mouse or keyboard
 // with mouse -> open submenu
