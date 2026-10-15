@@ -3,6 +3,7 @@ import { getMenuBounds } from '../GetMenuBounds/GetMenuBounds.ts'
 import * as GetMenuVirtualDom from '../GetMenuVirtualDom/GetMenuVirtualDom.ts'
 import * as GetVisibleMenuItems from '../GetVisibleMenuItems/GetVisibleMenuItems.ts'
 import { addMenuInternal, getAll, getCount } from '../InternalMenuState/InternalMenuState.ts'
+import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 
 // TODO difference between focusing with mouse or keyboard
 // with mouse -> open submenu
@@ -17,12 +18,15 @@ import { addMenuInternal, getAll, getCount } from '../InternalMenuState/Internal
 // TODO more tests
 
 export const getMenuShowCommands = async (items: any, menuId: any, x: number, y: number, mouseBlocking = false): Promise<any> => {
-  const bounds = await getMenuBounds(x, y, items)
+  const viewport = await RendererProcess.invoke('Menu.getViewport')
+  const bounds = await getMenuBounds(x, y, items, false, viewport)
   const menu = addMenuInternal({
     focusedIndex: -1,
     id: menuId,
     items,
     level: getCount(),
+    viewport,
+    width: bounds.width,
     x: bounds.x,
     y: bounds.y,
   })

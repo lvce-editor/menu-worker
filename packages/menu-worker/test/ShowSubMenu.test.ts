@@ -207,3 +207,23 @@ test.each([-1, 0])('selecting a submenu opens it when the focused index is %i', 
   expect(getMenuEntries2).toHaveBeenCalledTimes(1)
   expect(InternalMenuState.getAll()).toHaveLength(2)
 })
+
+test('opens an overflowing submenu to the left inside its owning viewport', async () => {
+  getMenuEntries2.mockResolvedValue([{ flags: MenuItemFlags.None, label: 'Sign Out' }])
+  InternalMenuState.set([
+    {
+      args: [],
+      focusedIndex: 0,
+      id: 1,
+      items: [{ flags: MenuItemFlags.SubMenu, id: 2, label: 'Account' }],
+      level: 0,
+      uid: 42,
+      viewport: { height: 400, width: 600, x: 600, y: 80 },
+      width: 200,
+      x: 1000,
+      y: 450,
+    },
+  ])
+  await showSubMenuAtEnter(0, 0, 1000, 450)
+  expect(InternalMenuState.getAll()[1]).toMatchObject({ uid: 42, width: 220, x: 780, y: 416 })
+})
