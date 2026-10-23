@@ -17,6 +17,10 @@ export const view = (): string => {
   return I18nString.i18nString(UiStrings.View)
 }
 
+export const fullScreen = (): string => {
+  return I18nString.i18nString(UiStrings.FullScreen)
+}
+
 export const go = (): string => {
   return I18nString.i18nString(UiStrings.Go)
 }
@@ -47,4 +51,60 @@ export const maximize = (): string => {
 
 export const close = (): string => {
   return I18nString.i18nString(UiStrings.Close)
+}
+
+export const titleBar = (): string => {
+  return I18nString.i18nString(UiStrings.TitleBar)
+}
+
+export const menuBar = (): string => {
+  return I18nString.i18nString(UiStrings.MenuBar)
+}
+
+export const commandCenter = (): string => {
+  return I18nString.i18nString(UiStrings.CommandCenter)
+}
+
+export const search = (): string => {
+  return I18nString.i18nString(UiStrings.Search)
+}
+
+export const layoutControls = (): string => {
+  return I18nString.i18nString(UiStrings.LayoutControls)
+}
+
+export const about = (): string => {
+  return I18nString.i18nString(UiStrings.About)
+}
+
+export const copy = (): string => {
+  return I18nString.i18nString(UiStrings.Copy)
+}
+
+export const cut = (): string => {
+  return I18nString.i18nString(UiStrings.Cut)
+}
+
+export const exit = (): string => {
+  return I18nString.i18nString(UiStrings.Exit)
+}
+
+export const paste = (): string => {
+  return I18nString.i18nString(UiStrings.Paste)
+}
+
+export const redo = (): string => {
+  return I18nString.i18nString(UiStrings.Redo)
+}
+
+export const selectAll = (): string => {
+  return I18nString.i18nString(UiStrings.SelectAll)
+}
+
+export const toggleDeveloperTools = (): string => {
+  return I18nString.i18nString(UiStrings.ToggleDeveloperTools)
+}
+
+export const undo = (): string => {
+  return I18nString.i18nString(UiStrings.Undo)
 }

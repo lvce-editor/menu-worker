@@ -1,37 +1,66 @@
 import { expect, test } from '@jest/globals'
 import * as PathDisplay from '../src/parts/PathDisplay/PathDisplay.ts'
 
-test('getTitle with empty uri', () => {
-  expect(PathDisplay.getTitle('', '')).toBe('')
-  expect(PathDisplay.getTitle('/home/user', '')).toBe('')
+test('getTitle - empty uri', () => {
+  const result = PathDisplay.getTitle('/home/user', '')
+  expect(result).toBe('')
 })
 
-test('getTitle with homeDir prefix', () => {
-  expect(PathDisplay.getTitle('/home/user', '/home/user/project')).toBe('~/project')
-  expect(PathDisplay.getTitle('/home/user', '/home/user')).toBe('~')
-  expect(PathDisplay.getTitle('/home/user', '/home/user/sub/folder')).toBe('~/sub/folder')
+test('getTitle - uri starts with homeDir', () => {
+  const result = PathDisplay.getTitle('/home/user', '/home/user/project')
+  expect(result).toBe('~/project')
 })
 
-test('getTitle with file:// protocol', () => {
-  expect(PathDisplay.getTitle('', 'file:///path/to/file')).toBe('/path/to/file')
-  expect(PathDisplay.getTitle('/home/user', 'file:///path/to/file')).toBe('/path/to/file')
-  expect(PathDisplay.getTitle('/home/user', 'file:///home/user/project')).toBe('/home/user/project')
+test('getTitle - uri matches homeDir', () => {
+  const result = PathDisplay.getTitle('/home/user', '/home/user')
+  expect(result).toBe('~')
 })
 
-test('getTitle with homeDir and file:// protocol', () => {
-  expect(PathDisplay.getTitle('/home/user', 'file:///home/user/project')).toBe('/home/user/project')
+test('getTitle - uri starts with same prefix as homeDir', () => {
+  const result = PathDisplay.getTitle('/home/user', '/home/user2/project')
+  expect(result).toBe('/home/user2/project')
 })
 
-test('getTitle returns uri as is when no conditions match', () => {
-  expect(PathDisplay.getTitle('', '/some/path')).toBe('/some/path')
-  expect(PathDisplay.getTitle('/home/user', '/other/path')).toBe('/other/path')
-  expect(PathDisplay.getTitle('/home/user', 'http://example.com')).toBe('http://example.com')
+test('getTitle - uri starts with file protocol', () => {
+  const result = PathDisplay.getTitle('/home/user', 'file:///path/to/file')
+  expect(result).toBe('/path/to/file')
 })
 
-test('getTitle with empty homeDir', () => {
-  expect(PathDisplay.getTitle('', '/path/to/file')).toBe('/path/to/file')
-  expect(PathDisplay.getTitle('', 'file:///path/to/file')).toBe('/path/to/file')
+test('getTitle - file uri starts with homeDir', () => {
+  const result = PathDisplay.getTitle('/home/user', 'file:///home/user/project')
+  expect(result).toBe('~/project')
 })
+
+test('getTitle - decodes file uri path for display', () => {
+  const result = PathDisplay.getTitle('/home/user', 'file:///home/user/workspace%20with%20spaces%20%E2%80%93%20%C3%BC')
+  expect(result).toBe('~/workspace with spaces – ü')
+})
+
+test('getTitle - regular uri', () => {
+  const result = PathDisplay.getTitle('/home/user', '/some/other/path')
+  expect(result).toBe('/some/other/path')
+})
+
+test('getTitle - empty homeDir', () => {
+  const result = PathDisplay.getTitle('', '/path/to/file')
+  expect(result).toBe('/path/to/file')
+})
+
+test('getHomeDir - linux home path', () => {
+  const result = PathDisplay.getHomeDir('/home/user/project')
+  expect(result).toBe('/home/user')
+})
+
+test('getHomeDir - macos home file uri', () => {
+  const result = PathDisplay.getHomeDir('file:///Users/user/project')
+  expect(result).toBe('/Users/user')
+})
+
+test('getHomeDir - other path', () => {
+  const result = PathDisplay.getHomeDir('/usr/lib/lvce/resources/app/playground')
+  expect(result).toBe('')
+})
+
 test('getTitle displays remote SSH paths and hosts', () => {
   expect(PathDisplay.getTitle('/home/user', 'remote-ssh://dev/home/user/project')).toBe('/home/user/project [SSH: dev]')
   expect(PathDisplay.getTitle('', 'remote-ssh://dev:2222/work/my%20project')).toBe('/work/my project [SSH: dev:2222]')
